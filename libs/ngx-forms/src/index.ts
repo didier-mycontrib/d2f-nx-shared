@@ -1,1 +1,1 @@
-export * from './lib/ngx-forms/ngx-forms';
+export * from './lib/generic/dynamicForm/dynamicForm.component';

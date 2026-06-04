@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgxForms } from './ngx-forms';
+import { PersonComponent } from './person.component';
 
-describe('NgxForms', () => {
-  let component: NgxForms;
-  let fixture: ComponentFixture<NgxForms>;
+describe('PersonComponent', () => {
+  let component: PersonComponent;
+  let fixture: ComponentFixture<PersonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgxForms],
+      imports: [PersonComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NgxForms);
+    fixture = TestBed.createComponent(PersonComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

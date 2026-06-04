@@ -18,6 +18,7 @@ export class App {
     new MenuDef("home","/ngr-home"),
     new MenuDef("public ...",null,[
       new MenuDef("basic","/ngr-basic"),
+       new MenuDef("person","/ngr-person"),
       //new MenuDef("demo","/ngr-demo"),
       //new MenuDef("conversion","/ngr-conversion")
     ]),
@@ -35,6 +36,7 @@ export class App {
   quickMenuDefs : MenuDef[] = [
       //new MenuDef("demo","/ngr-demo"),
       new MenuDef("basic","/ngr-basic"),
+       new MenuDef("person","/ngr-person"),
   ];
 
 }
