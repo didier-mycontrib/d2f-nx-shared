@@ -1,0 +1,52 @@
+@import  "../../common/css/d2f-common-layout.css"; 
+
+.withBlackBorder{
+  border : 1px solid black;
+}
+
+.withRedBorder{
+  border : 1px solid red;
+}
+
+.flexRowNoWrap {
+    align-items : stretch !important; /* redefinition , not center nor start nor end here */
+}
+
+.mainSideNav { 
+    /*background-color: lightgrey;*/
+    /* min-height: 150px ; */
+    height : 100%;
+    /* border : 1px solid red; */
+    /* width : 12em; */
+}
+
+.selected {
+    background-color: bisque;
+    /* font-weight: bold;  //with .width side effect */
+    text-shadow:0px 0.5px 0.5px blue; /* without .width side effect */
+}
+
+.main-level-menu{
+  /* border : 1px solid red;*/
+  padding-left: 0.2em;
+  padding-right: 0.4em;
+}
+
+.sub-level-menu{
+    border-left : 1px solid blue;
+    padding-left: 0.4em;
+    padding-right: 0.2em;
+}
+
+
+.my-menu-item {
+    color : blue;
+    height:  1.2em !important;
+    margin-bottom: 0.2em;
+    /* text-align: left; */
+    width : fit-content;
+}
+
+.degradeDeGrisClair {
+    background: linear-gradient(to bottom  , rgba(245, 245, 245, 0.9) , rgba(180, 180, 180, 0.9));
+  }

@@ -1,2 +1,18 @@
+<!-- <h1 class="text-green-600">{{title()}}</h1>
+<hr/>-->
+<d2f-ngx-layout [title]="title()"
+                [mainMenuDefs]="appMenuDefs" 
+                [quickMenuDefs]="quickMenuDefs"
+                [legalFooterMainText]="legalFooterMainText"
+                [legalFooterTemplateRef]="legalFooterContent"
+                 >
+</d2f-ngx-layout>
+
+<ng-template #legalFooterContent>
+  <u>author:</u>&nbsp; Didier Defrance
+</ng-template>
+
+<!--
 <router-outlet></router-outlet>
 <p highlightBackgroundOver="orange">welcome</p>
+-->

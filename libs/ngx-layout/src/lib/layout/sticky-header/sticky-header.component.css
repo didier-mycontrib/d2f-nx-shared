@@ -1,0 +1,28 @@
+@import  "../../common/css/d2f-common-layout.css"; 
+
+.my-header { background-color: white;  }
+.highlight { font-weight: bold;}
+.title { color : blue; }
+.degradeDeBleu {
+    background: linear-gradient(to bottom right , rgba(80, 67, 227, 0.9), rgba(245, 245, 245, 0.9));
+  }
+
+.withLeftPadding{
+  padding-left: 0.1em;
+}
+
+.withRightPadding{
+  padding-right: 0.1em;
+}
+
+.withRightMargin{
+  padding-right: 0.1em;
+}
+
+
+.customIconSize {
+  /*default : 24px*/
+  font-size: 18px;
+  height: 18px ;
+  width: 18px ;
+}

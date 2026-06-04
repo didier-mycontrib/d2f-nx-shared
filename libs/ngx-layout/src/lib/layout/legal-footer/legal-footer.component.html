@@ -1,0 +1,16 @@
+<!--
+<div class="dark-footer" [innerHTML]="legalFooterInnerHtml()"></div>
+-->
+<!--
+<div>TEMP-LEGAL-FOOTER</div>
+-->
+
+<my-mat-toggle-panel [title]="legalFooterMainText()"
+     [(panelOpenState)]="footerPanelExpand">
+    @if(legalFooterTemplateRef()){
+        <ng-container [ngTemplateOutlet]="legalFooterTemplateRef()??null"></ng-container>
+    }@else{
+        <p>legal footer</p>
+    }
+</my-mat-toggle-panel>
+

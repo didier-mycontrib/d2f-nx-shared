@@ -1,0 +1,28 @@
+<div class="fondVert">
+    <p>calcul de tva</p>
+    ht : <input type="number" [(ngModel)]="ht" (input)="onCalculerTvaEtTtc()" > <br/>
+    taux : <select [(ngModel)]="taux" (change)="onCalculerTvaEtTtc()">
+        @for(t of tauxPossibles; track t){
+            <!-- <option>{{t}}</option> -->
+              <option [ngValue]="t">{{t}}%</option>
+        }
+        </select><br/>
+    <!-- <button (click)="onCalculerTvaEtTtc()">calculer tva et ttc</button>  <br/> -->
+    tva={{tva | toFixed:2}} <br/>
+    <!-- ttc={{ttc | number:'1.0-2':'fr'}} <br/> -->
+    ttc={{ttc | toFixed:2}} <br/>
+</div>
+
+
+<!-- ancienne version prémiminaire :
+
+<div class="fondVert">
+    <p>calcul de tva</p>
+    ht : <input type="number" [(ngModel)]="ht" > <br/>
+    taux : <input type="number" [(ngModel)]="taux" > <br/>
+    <button (click)="onCalculerTvaEtTtc()">calculer tva et ttc</button>  <br/>
+    tva={{tva}} <br/>
+    ttc={{ttc}} <br/>
+</div>
+
+-->

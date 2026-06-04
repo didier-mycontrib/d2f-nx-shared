@@ -1,0 +1,41 @@
+
+ @import  "../../common/css/d2f-common-base.css"; 
+
+
+.my-toogle-panel {
+   margin-top : 2px;
+   margin-left : 4px;
+   margin-right : 4px;
+   margin-bottom : 4px;
+}
+
+
+ .mat-expansion-panel-header {
+     /* background-color: rgb(10, 10, 148) !important; */
+     background-color: var(--my-bg-primary) !important; /* need d2f-theme additional css class */
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+ }
+
+ .mat-expansion-panel-header-title {
+      /* background-color is inherited from parent panel-header */
+    color : white ;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+ }
+
+ ::ng-deep {
+   mat-expansion-panel {
+       .mat-expansion-panel-body {
+           padding: 0.2em;
+       }
+   }
+}
+
+ .mat-expansion-panel{
+   padding-bottom: 0px !important;
+ }
+
+ ::ng-deep .my-toogle-panel-header .mat-expansion-indicator::after {
+    color : white ;
+ }

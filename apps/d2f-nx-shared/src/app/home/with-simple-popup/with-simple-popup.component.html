@@ -1,0 +1,14 @@
+<p>with-simple-popup: example of basic popup/modal without material</p>
+age={{age}}
+<hr/>
+<button (click)="showAgePopup()">Show Popup (input age)</button>
+@if(toBeShown){
+  <my-simple-popup [dialogTemplateRef]="basicAgeInput" title="how hold are you ?"
+                   (closeConfirm)="handlePopupResult($event)"></my-simple-popup>
+}
+
+<ng-template #basicAgeInput >
+    age : <input [(ngModel)]="basicAgeDialogContext.age" />
+</ng-template>
+
+ 

@@ -1,0 +1,23 @@
+@import  "../../common/css/d2f-common-layout.css"; 
+
+.quick-menu {  background-color: whitesmoke;
+              padding: 1px ;
+              width: 100%;}
+.my-button { 
+    margin: 1px;
+    border: 1px solid darkblue;
+}
+
+.boutonRondCarre {
+    border-radius: 12px 0 12px 0;
+    font: bold 10px Verdana;
+    background: darkblue;
+    color : white;
+    /*
+    
+    border: none;
+    color: #555;
+    padding: 6px 0 6px 0;
+    border: 1px solid #ccc;
+    */
+  }

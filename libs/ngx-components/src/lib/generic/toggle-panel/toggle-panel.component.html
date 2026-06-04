@@ -1,0 +1,11 @@
+<div class="mt-1 mb-1">
+<h4 class="mb-0 p-1 bg-blue-600 rounded-t-sm">
+<a class="text-white no-underline" (click)="panelOpenState.set(!panelOpenState())" >
+<span class="bg-white text-blue-600 m-1 px-1 font-bold" [style.display]="panelOpenState()?'none':'inline-block'">+</span>
+<span class="bg-white text-blue-600 m-1 px-1 font-bold" [style.display]="panelOpenState()?'inline-block':'none'">-</span>{{title()}}
+</a>
+</h4>
+<div class="border-2 border-blue-600 p-1 rounded-b-sm hidden" [style.display]="panelOpenState()?'block':'none'">
+<ng-content></ng-content> <!-- remplacé par le contenu imbriqué -->
+</div>
+</div>

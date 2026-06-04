@@ -1,0 +1,8 @@
+    
+    nbMonth: <input type="number" name="nbMonth" [(ngModel)]="nbMonth" /> <br/>
+    amount : <input type="number" name="amount"  [(ngModel)]="amount" /> <br/>
+    annualRate (%): <input type="number" name="annualRate"  [(ngModel)]="annualRate" /> <br/>
+    <hr/>
+    monthlyPayment: <span id="monthlyPayment">{{monthlyPayment()}}</span>
+
+<!-- <button (click)="onComputeMonthlyPayment()">compute loan monthly payment</button> <br/> -->

@@ -1,0 +1,34 @@
+<p>home with directives</p>
+
+<img highlightBorderOver="red" src="favicon.ico" /> &nbsp;
+<img highlightBorderOver="blue" src="favicon.ico" /> <br/>
+<span class="c1" highlightBackgroundOver="lightgreen">welcome to my-standalone-app</span>
+<p highlightBackgroundOver>myParagraph</p>
+<div highlightBackgroundOver>divA with highlightBackgroundOver directive</div>
+<div highlightBorderOver>divB with highlightBorderOver directive</div>
+<span highlightBorderOver="red">span with highlightBorderOver directive</span>
+<hr/>
+<div [style.background]="divBackgroundColor()" class="withPadding">
+    <button (click)="onDialogAge()">age? dialog</button> 
+    age=<span [style.color]="ageColor()">{{age()}}</span> &nbsp;
+    <button (click)="onDialogConfirmReset()">reset age? dialog</button> &nbsp;
+    <button (click)="onDialogChooseColor()">color? choice dialog</button> &nbsp;
+    <button (click)="onDialogChooseBackColor()">back color? template dialog</button>
+    <hr/>
+    <button (click)="onBasicTemplateDialogAge()">age? basic template dialog</button>
+</div>
+
+<ng-template #basicAgeInput >
+    age : <input [(ngModel)]="basicAgeDialogContext.age" />
+</ng-template>
+
+<ng-template #backColorChoose >
+    bgColor : <select [(ngModel)]="bgColorDialogContext.bgColor" >
+        <option>lightgrey</option>
+        <option>lightgreen</option>
+        <option>lightyellow</option>
+        <option>lightblue</option>
+    </select>
+</ng-template>
+<hr/>
+<app-with-simple-popup></app-with-simple-popup>
