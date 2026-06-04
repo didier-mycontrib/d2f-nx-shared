@@ -1,0 +1,9 @@
+{
+  "name": "d2f-nx-shared-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/d2f-nx-shared-e2e/src",
+  "implicitDependencies": ["d2f-nx-shared"],
+  "// targets": "to see all targets run: nx show project d2f-nx-shared-e2e --web",
+  "targets": {}
+}
