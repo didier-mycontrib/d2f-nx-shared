@@ -13,7 +13,13 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "paths": {}
+    "paths": {
+      "d2f-ngx-util": ["./libs/ngx-util/src/index.ts"],
+      "d2f-ngx-layout": ["./libs/ngx-layout/src/index.ts"],
+      "d2f-ngx-components": ["./libs/ngx-components/src/index.ts"],
+      "d2f-ngx-forms": ["./libs/ngx-forms/src/index.ts"],
+      "d2f-ngx-crud": ["./libs/ngx-crud/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
