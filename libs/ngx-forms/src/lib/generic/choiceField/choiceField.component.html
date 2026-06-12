@@ -1,0 +1,28 @@
+<div>
+    <label class="block text-sm">{{effectiveLabel()}}:</label>
+    @if(!bigChoice){
+       @if(formRef()){
+           @for(v of items(); track v){
+             <label><input type="radio" [value]="v" [formField]="formRef()[name()]" >{{v}}</label>&nbsp;
+           }
+        }@else{
+            @for(v of items(); track v){
+             <label><input type="radio" [value]="v" [(ngModel)]="fieldData" [name]="name()" >{{v}}</label>&nbsp;
+            }
+    }
+    }@else{
+         @if(formRef()){
+          <select [formField]="formRef()[name()]" >
+              @for(v of items(); track v){
+                <option>{{v}}</option>
+              }
+          </select>
+        }@else{
+          <select [(ngModel)]="fieldData" [name]="name()" >
+               @for(v of items(); track v){
+                <option>{{v}}</option>
+              }
+          </select>
+        }
+    }
+</div>

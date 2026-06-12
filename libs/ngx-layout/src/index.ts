@@ -8,5 +8,3 @@ export * from './lib/layout/status-bar/status-bar.component';
 export * from './lib/layout/sticky-footer/sticky-footer.component';
 export * from './lib/layout/sticky-header/sticky-header.component';
 export * from './lib/common/data/menu-def'
-export * from './lib/common/data/user-session'
-export * from './lib/common/service/user-session.service'

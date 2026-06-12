@@ -1,6 +1,12 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, input, Signal } from '@angular/core';
+import { Component, computed, input, signal, Signal } from '@angular/core';
 import { FormField , ValidationError  } from '@angular/forms/signals';
+import { computed_mapFieldErrorMessageSignal, entityModelFromForm, isFieldValid } from '../../common/util/mySignalFormUtil';
+import { LabelInputFieldComponent } from '../labelInputField/labelInputField.component';
+import { BooleanFieldComponent } from '../booleanField/booleanField.component';
+import { FieldInfo, FieldInfoMap } from '../../common/data/fieldInfo';
+import { ChoiceFieldComponent } from '../choiceField/choiceField.component';
+import { ManySelectFieldComponent } from '../manySelectField/manySelectField.component';
 
 /*
 En version signalForm
@@ -8,44 +14,51 @@ En version signalForm
 
 
 @Component({
-  selector: 'lib-dynamic-form',
-  imports: [FormField,NgClass],
+  selector: 'ngx-dynamic-form',
+  imports: [FormField,NgClass,LabelInputFieldComponent,BooleanFieldComponent,ChoiceFieldComponent,ManySelectFieldComponent],
   templateUrl: './dynamicForm.component.html',
-  styleUrl: './dynamicForm.component.css',
+  styleUrls: ['./dynamicForm.component.css', '../../common/css/common.form.css'],
 })
 export class DynamicFormComponent {
   formRef = input<any>();
-  entityModel!:object
+  withValidInvalidClasses = input(false);
+  mapFieldInfo=input<FieldInfoMap>({});
+
+  mapFieldErrorMessageSignal! :Signal<Map<string,string>>; //computed signal where errors messages are extracted , build as string and store in a map <fielName,ErrorString>
+ 
+
+  entityModel!: object ;
 
   ngOnInit(){
-   let entityModelSignal = (this.formRef())().controlValue;
-   this.entityModel = entityModelSignal();
-   console.log("entityModel=" + JSON.stringify(this.entityModel));
+   this.entityModel = entityModelFromForm(this.formRef());
+   this.mapFieldErrorMessageSignal = computed_mapFieldErrorMessageSignal(this.formRef());
+   for(let k of this.objectKeysArray(this.entityModel)){
+    let v = (<any>this.entityModel)[k];
+    let fieldInfo : FieldInfo = this.mapFieldInfo()[k];
+    if(fieldInfo==undefined){
+      fieldInfo = { }
+      this.mapFieldInfo()[k]= fieldInfo;
+    }
+    if(fieldInfo.type==undefined)
+         fieldInfo.type=typeof v;
+    //console.log("k="+k + " v="+v + " type=" + this.mapFieldInfo()[k].type)
+   }
   }
 
+  
    objectKeysArray(obj:object):any[]{
           return Reflect.ownKeys(obj);
-        }
+        }     
 
-   errorSignal(fieldName:string ) : Signal<string> {
-      let f = this.formRef()[fieldName];
-      let errors = <ValidationError.WithFieldTree[] > <any> f().errors();
-           return  computed(() => errors.map(e=>e.message).join(" "));
-   }   
-   
-   isFieldValid(fieldName:string ){
-    let f = this.formRef()[fieldName];
-    if(f!=undefined)
-      return !(f().invalid());
-    else 
-      return false;
-  }
+   //optional styles classes settings (ng-valid & ng-invalid)
+   //only activated if [withValidInvalidClasses]='true' , default as false
+  
 
   classForField(fieldName:string) {
-   let v= this.isFieldValid(fieldName);
+   let v= isFieldValid(fieldName,this.formRef());
   return {
-    'ng-valid': v,     
-    'ng-invalid': !v, 
+    'ngsf-valid': v,     
+    'ngsf-invalid': !v, 
     }
  }
 

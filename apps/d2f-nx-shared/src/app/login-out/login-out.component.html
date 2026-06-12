@@ -1,0 +1,90 @@
+<h3>login-out  <select [(ngModel)]="loginMode">
+    <option>standalone-login-api</option>
+    <option>oauth2</option>
+</select></h3>
+<span [class.success]="isOk" 
+      [class.error]="!isOk">{{message}}</span>
+<hr/>
+
+@if(sAuthenticated()){
+<div>
+   <h3 class="connected">you are connected</h3>
+   @if(userSessionEx.userId && userSessionEx.userId != '' && userSessionEx.userId != '?'){
+   <p>userId: <span >{{userSessionEx.userId}}</span></p>
+   }
+   <p>userName: <span class="highlight">{{userSessionEx.userName}}</span></p>
+   @if(userSessionEx.userRoles.length >0){
+         <p>userRoles: <span class="highlight">{{userSessionEx.userRoles.join(',')}}</span></p>
+   }
+   @if(userSessionEx.authToken){
+   <p>authToken: <span>{{userSessionEx.authToken}}</span></p>
+   }
+   @if(userSessionEx.userDetails){
+      <p>details: <span>{{userSessionEx.userDetails}}</span></p>
+   }
+   
+   <p><button (click)="onLogout()">logout</button></p>
+</div>
+}@else {
+<div class="m-1">
+    <h3 class="disconnected">you are not yet connected</h3>
+    @if(loginMode == 'standalone-login-api'){
+       <ng-container *ngTemplateOutlet="standaloneLogin"></ng-container>
+    }
+    @if(loginMode == 'oauth2') {
+        <ng-container *ngTemplateOutlet="oauth2Login"></ng-container>
+    }
+</div>
+}
+
+<!--
+<hr/>
+<p>userSession: {{userSessionEx | json}}</p>
+-->
+
+<!--  standaloneLogin template -->
+<ng-template #standaloneLogin>
+    <form #formLogin="ngForm">
+        <div class="flexRowWrap">
+            <label class="f-align">username: (admin1)</label>
+            <div class="f-align">
+                <input  name="username" class="f-max-size  mb-1" [(ngModel)]="login.username" required />
+            </div>
+        </div>
+        <div class="flexRowWrap">
+            <label class="f-align">password: (pwd1)</label>
+            <div class="f-align">
+                <input  name="password" class="f-max-size  mb-1" [(ngModel)]="login.password"  />
+            </div>
+        </div>
+        <div class="flexRowWrap">
+            <label class="f-align">roles:</label>
+            <div class="f-align">
+                <input  name="roles" class="f-max-size  mb-1" [(ngModel)]="login.roles"  />
+            </div>
+        </div>
+        <div class="flexRowWrap">
+            <label class="f-align"></label>
+            <div class="f-align">
+              <button [disabled]="!formLogin.form.valid" (click)="onStandaloneLogin()">login</button>
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+<!--  oauth2Login template -->
+<ng-template #oauth2Login>
+    <a href="https://www.d-defrance.fr/keycloak/realms/sandboxrealm/.well-known/openid-configuration" target="_new">openid-configuration</a> &nbsp;<span class="redClass">(delete old cookies if necessary (login error) !!!)</span> <br/>
+    <p>
+        <button (click)="onOAuth2Login()" >oauth2 Login</button> &nbsp;&nbsp;
+        <button (click)="onLogout()" >oauth2 Logout</button> &nbsp;<span class="redClass">(if logout error, go back and try login)</span>
+    </p>    
+    <div>
+     <p>exemples of good Username/Password:</p>
+       <ul>
+          <li>mgr1/pwd1 (MANAGE_RW : resource.read , resource.write )</li> 
+          <li>admin1/pwd1 (ADMIN_CRUD : resource.read , resource.write , resource.delete )</li> 
+          <li>user1/pwd1 (USER : resource.read  )</li> 
+       </ul>
+    </div>
+</ng-template>

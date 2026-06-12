@@ -1,0 +1,11 @@
+<div>
+    @if(label()){
+        <label class="block text-sm">{{label()}}:</label>
+    }
+    @if(formRef()){
+        <input type="checkbox" [formField]="formRef()[name()]" >
+    }@else{
+        <input type="checkbox" [(ngModel)]="fieldData" [name]="name()" />
+    }
+    <label class="">{{name()}}</label>
+</div>

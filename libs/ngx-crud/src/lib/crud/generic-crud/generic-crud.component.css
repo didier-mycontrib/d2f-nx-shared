@@ -1,0 +1,40 @@
+@import  "../../common/css/d2f-common-layout.css"; 
+
+.flexRowWrap {
+    align-items : stretch !important; /* redefinition , not center nor start nor end here */
+}
+
+/* Fix table head */
+.tableContainerWithFixHead    { overflow: auto; height: 100px; }
+.tableContainerWithFixHead th { position: sticky; top: 0; }
+
+/* Just common table stuff. */
+table  { border-collapse: collapse; width: 100%;border :1px solid black;}
+th, td { padding: 1px 1px; border:1px solid black;}
+th     { background:#eee; text-align: left;}
+
+.selected { 
+     
+      text-shadow:0px 0.5px 0.5px blue; 
+}
+
+.mat-card-header {
+    color : white !important; 
+    background-color: blue !important;
+}
+
+label.f-align {
+    width: 8em;
+    display: inline-block;
+    margin-left: 0.3em;
+    flex: 0 0 8em;
+  }
+  
+  .f-align {
+    margin-left: 0.3em;
+    flex: 1 1 auto;
+  }
+  
+  .f-max-size {
+    width: 97%;
+  }

@@ -1,10 +1,25 @@
-<form novalidate class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<form novalidate class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
  @for( key of objectKeysArray(entityModel); track key){
-    <div>
-        <label class="block text-sm">{{key}}:</label>
-        <input [formField]="formRef()[key]" [ngClass]="classForField(key)" class="w-full" /> 
-        <span class="text-red-600">{{errorSignal(key)()}}</span>
-    </div>
+   @switch(mapFieldInfo()[key].type){
+       @case("boolean"){
+            <ngx-boolean-field [formRef]="formRef()" [name]="key" [label]="mapFieldInfo()[key].label" ></ngx-boolean-field>
+       }
+       @case("array"){
+            <ngx-many-select-field [formRef]="formRef()" [name]="key" [label]="mapFieldInfo()[key].label" [items]="mapFieldInfo()[key].items??[]" ></ngx-many-select-field>
+       }
+       @default{
+            @if(mapFieldInfo()[key].pseudoEnum){
+                 <ngx-choice-field [formRef]="formRef()" [name]="key" [pseudoEnum]="mapFieldInfo()[key].pseudoEnum"></ngx-choice-field>
+            }
+            @if(mapFieldInfo()[key].items){
+                 <ngx-choice-field [formRef]="formRef()" [name]="key" [items]="mapFieldInfo()[key].items??[]"></ngx-choice-field>
+            }
+            @if(!mapFieldInfo()[key].pseudoEnum! && !mapFieldInfo()[key].items){
+                 <ngx-label-input-field [formRef]="formRef()" [name]="key"
+                     [inputType]="mapFieldInfo()[key].type??'text'"></ngx-label-input-field>
+            }
+       }
    }
+}
 </form>
 

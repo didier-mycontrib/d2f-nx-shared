@@ -1,4 +1,3 @@
-@import  "../../common/css/d2f-common-layout.css"; 
 
 .light-footer { background-color: ghostwhite; color : black;}
 
@@ -12,10 +11,6 @@
     padding-right: 0.1em;
   }
   
-  .withRightMargin{
-    padding-right: 0.1em;
-  }
-  
   
   .customIconSize {
     /*default : 24px*/
@@ -23,3 +18,61 @@
     height: 18px ;
     width: 18px ;
   }
+
+  .flexItem {
+    flex: 1 1 auto;
+}
+
+.flexRowNoWrap {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap : nowrap;
+   align-items : center;
+}
+
+.flexColumnNoWrap {
+    display: flex; 
+    flex-direction: column;
+    flex-wrap : nowrap;
+}
+
+.left-text-align {
+    text-align: left;
+}
+
+.center-text-align {
+    text-align: center;
+}
+
+.fixed1emFlexItem {
+    flex: 0 0 1em;
+}
+
+/*d'abord les regles pour tous medias et tailles */
+
+
+/* ensuite nouvelles regles pour taille > 600px de large) */
+@media screen and (min-width : 600px){
+
+    .noDisplayForLargeWidth{
+        display : none;
+    }
+
+    .noDisplayForSmallWidth{
+        display : block;
+    }
+
+}
+
+/* ensuite nouvelles regles pour taille < 600px de large) */
+@media screen and (max-width : 600px){
+
+    .noDisplayForLargeWidth{
+        display: block;
+    }
+
+    .noDisplayForSmallWidth{
+        display : none;
+    }
+
+}

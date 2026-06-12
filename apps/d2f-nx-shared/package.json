@@ -2,6 +2,7 @@
   "name": "d2f-nx-shared",
   "dependencies": {
     "d2f-ngx-util": "workspace:*",
+     "d2f-ngx-session" :  "workspace:*",
     "d2f-ngx-components": "workspace:*",
     "d2f-ngx-layout": "workspace:*",
     "d2f-ngx-forms": "workspace:*",

@@ -19,7 +19,8 @@
           {
             "glob": "**/*",
             "input": "apps/d2f-nx-shared/public"
-          }
+          },
+              "apps/d2f-nx-shared/src/silent-refresh.html"
         ],
         "styles": [
           "apps/d2f-nx-shared/src/material-theme.scss",

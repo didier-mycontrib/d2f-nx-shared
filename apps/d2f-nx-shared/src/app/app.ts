@@ -19,24 +19,25 @@ export class App {
     new MenuDef("public ...",null,[
       new MenuDef("basic","/ngr-basic"),
        new MenuDef("person","/ngr-person"),
+       new MenuDef("products","/ngr-product"),
       //new MenuDef("demo","/ngr-demo"),
       //new MenuDef("conversion","/ngr-conversion")
     ]),
     
-    /*
+    
     new MenuDef("login-out","/ngr-login-out"),
     
     new MenuDef("admin ...",null,[
       new MenuDef("devises","/ngr-devise"),
-      new MenuDef("products","/ngr-product"),
     ])
-      */
+      
   ];
 
   quickMenuDefs : MenuDef[] = [
       //new MenuDef("demo","/ngr-demo"),
       new MenuDef("basic","/ngr-basic"),
        new MenuDef("person","/ngr-person"),
+       new MenuDef("products","/ngr-product"),
   ];
 
 }

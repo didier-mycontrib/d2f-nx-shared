@@ -1,0 +1,32 @@
+<generic-crud  [genericCrudContext]="genericCrudContext"
+               [optionalSpecificSubFormTemplateRef]="deviseSpecificSubform">
+</generic-crud>
+
+<!--
+NB: subFormData as interface AbstractGenSubFormData
+with .mode ("newOne" or "existingOne") and .obj = object of form
+-->
+<ng-template #deviseSpecificSubform let-subFormData="subFormData" >
+    <div>
+        <!-- deviseSpecificSubform with mode = {{subFormData?.mode}} -->
+        <div class="flexRowWrap" > 
+            <label class="f-align">code:</label>
+            <div class="f-align">
+                <!-- <label class="f-max-size  mb-1">{{subFormData.obj.code}}</label> if noEditable -->
+                <input name="code" class="f-max-size  mb-1" [(ngModel)]="subFormData.obj.code" />
+            </div>
+        </div>
+        <div class="flexRowWrap" > 
+            <label class="f-align">name:</label>
+            <div class="f-align">
+                <input name="name" class="f-max-size  mb-1" [(ngModel)]="subFormData.obj.name" />
+            </div>
+        </div>
+        <div class="flexRowWrap" > 
+            <label class="f-align">change:</label>
+            <div class="f-align">
+                <input name="change" class="f-max-size  mb-1" [(ngModel)]="subFormData.obj.change" />
+            </div>
+        </div>
+    </div>
+  </ng-template>

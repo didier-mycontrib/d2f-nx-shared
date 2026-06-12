@@ -1,4 +1,3 @@
-@import  "../common/css/d2f-common-layout.css"; 
 
 /*d'abord les règles pour tous médias et tailles */
 
@@ -31,6 +30,10 @@
 }
 
 .stickyHeaderFirstInFlexCol{
+    flex-shrink: 0;
+}
+
+.stickyFooterLastInFlexCol{
     flex-shrink: 0;
 }
 

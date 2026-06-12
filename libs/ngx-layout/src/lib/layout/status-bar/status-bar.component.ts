@@ -1,6 +1,5 @@
 import { Component, computed, effect, inject, OnInit } from '@angular/core';
-import { UserSessionService } from '../../common/service/user-session.service';
-import { UserSessionEx } from '../../common/data/user-session';
+import { UserSessionService , UserSessionEx } from 'd2f-ngx-session';
 
 
 @Component({

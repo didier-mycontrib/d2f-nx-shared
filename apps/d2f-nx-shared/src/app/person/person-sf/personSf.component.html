@@ -1,0 +1,26 @@
+<h3> signalForm (person)</h3>
+ <form novalidate class="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-3">
+
+    <ngx-label-input-field [formRef]="personForm" name="firstname"  ></ngx-label-input-field>
+    <ngx-label-input-field [formRef]="personForm" name="lastname"  ></ngx-label-input-field>
+    <!--
+    <div>
+        <label class="block text-sm">lastname:</label>
+        <input [formField]="personForm.lastname" [ngClass]="classForField('lastname')" class="w-full" />
+        <span class="text-red-600">{{mapFieldErrorMessageSignal().get('lastname')}}</span>
+    </div>
+   -->
+    <ngx-label-input-field [formRef]="personForm" name="email"  ></ngx-label-input-field>
+    <ngx-label-input-field [formRef]="personForm" name="taille" inputType="number" ></ngx-label-input-field>
+    <ngx-label-input-field [formRef]="personForm" name="birthday" inputType="date"  ></ngx-label-input-field>
+    <ngx-boolean-field [formRef]="personForm" name="celibataire" label="situation"></ngx-boolean-field>
+    <ngx-choice-field [formRef]="personForm" name="genre" [pseudoEnum]="Genre"></ngx-choice-field>
+    <ngx-choice-field [formRef]="personForm" 
+                      name="nationalite" 
+                      [items]="['francais','europeen','autre']"></ngx-choice-field>
+    <ngx-many-select-field  [formRef]="personForm" name="sports"  
+      [items]="['velo' , 'football' , 'tennis' , 'basket' ]" ></ngx-many-select-field>                 
+</form>
+    <!-- person : <span [style.color]="okPerson?'green':'red'">{{ personModel() | json }}</span> <br/> -->
+    <input type="button" value="login" [disabled]="personForm().invalid()" (click)="onPerson()" /> <br/>
+    message: <span [style.color]="okPerson?'green':'red'">{{messagePerson}}</span> 

@@ -1,0 +1,14 @@
+<form novalidate class="grid grid-cols-1 md:grid-cols-2 gap-4">
+ @for( key of objectKeysArray(entityModel); track key){
+    <div>
+        <label class="block text-sm">{{key}}:</label>
+        @if(withValidInvalidClasses()){
+           <input [formField]="formRef()[key]" [ngClass]="classForField(key)" class="w-97/100" />
+        }@else{
+           <input [formField]="formRef()[key]" class="w-98/100" />  
+        }
+        <span class="block text-red-600">{{mapFieldErrorMessageSignal().get(key)}}</span>
+    </div>
+   }
+</form>
+

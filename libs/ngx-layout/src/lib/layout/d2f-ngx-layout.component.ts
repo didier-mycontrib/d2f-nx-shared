@@ -1,11 +1,10 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, HostListener, input, Input, InputSignal, model, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component,  input, InputSignal, model, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
 import { MainSideNavComponent } from './main-side-nav/main-side-nav.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { StickyFooterComponent } from './sticky-footer/sticky-footer.component';
-import { LegalFooterComponent } from './legal-footer/legal-footer.component';
 import { CommonModule } from '@angular/common';
 import { MenuDef } from '../common/data/menu-def';
 import { MyImportMaterialModule } from '../common/imports/my-import-material.module';
@@ -62,11 +61,7 @@ export class D2fNgxLayoutComponent implements OnInit {
   over (idem as push but over / no slide )*/
 
   ngOnInit() {
-    /*
-    //V1:
-    this.innerWidth = window.innerWidth;
-    this.displaySideMenuIfLargeWidth();
-    */
+
     this._breakpointObserver
     .observe([`(min-width: ${this.mySmallBreakPoint})`])
     .subscribe((state: BreakpointState) => {
@@ -115,20 +110,5 @@ export class D2fNgxLayoutComponent implements OnInit {
    this.openedSideNav.set(!this.openedSideNav());
   }
 
-  /*
-  //V1:
-  @HostListener('window:resize', ['$event'])
-  onResize(event :any) {
-    this.innerWidth = window.innerWidth;
-    this.displaySideMenuIfLargeWidth();
-  }
-
-  displaySideMenuIfLargeWidth(){
-    if (this.innerWidth < 600 ) {
-      this.openedSideNav = false;
-    } else {
-      this.openedSideNav = true;
-    } 
-  }
-  */
+  
 }

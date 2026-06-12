@@ -1,4 +1,3 @@
-@import  "../../common/css/d2f-common-layout.css"; 
 
 .quick-menu {  background-color: whitesmoke;
               padding: 1px ;
@@ -21,3 +20,18 @@
     border: 1px solid #ccc;
     */
   }
+
+  .flexRowWrap {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap : wrap;
+    align-items : center;
+}
+
+.flexItem {
+    flex: 1 1 auto;
+}
+
+.center-text-align {
+    text-align: center;
+}

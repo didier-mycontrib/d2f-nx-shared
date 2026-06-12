@@ -1,12 +1,17 @@
 
- @import  "../../common/css/d2f-common-base.css"; 
-
-
-.my-toogle-panel {
+ 
+.my-toogle-panel-with-margin {
    margin-top : 2px;
    margin-left : 4px;
    margin-right : 4px;
    margin-bottom : 4px;
+}
+
+.my-toogle-panel-without-margin {
+   margin-top : 0px;
+   margin-left : 0px;
+   margin-right : 0px;
+   margin-bottom : 0px;
 }
 
 
@@ -39,3 +44,8 @@
  ::ng-deep .my-toogle-panel-header .mat-expansion-indicator::after {
     color : white ;
  }
+
+ .d2f-theme {
+    --my-bg-primary : rgb(10, 10, 148);
+    --my-bg-secondary : rgb(104, 7, 104);
+}

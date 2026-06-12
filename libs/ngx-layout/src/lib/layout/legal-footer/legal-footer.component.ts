@@ -1,7 +1,8 @@
 import { Component, input, Input, model, OnInit, TemplateRef } from '@angular/core';
 import { inject, PLATFORM_ID } from "@angular/core";
 import { CommonModule, isPlatformBrowser} from "@angular/common";
-import { MyMatTogglePanelComponent} from 'd2f-ngx-components'; // ok after ng build d2f-ngx-components
+import { MyMatTogglePanelComponent} from 'd2f-ngx-components'; 
+//import { TogglePanelComponent} from 'd2f-ngx-components';
 
 @Component({
   selector: 'mylayout-legal-footer',

@@ -1,6 +1,6 @@
 <mat-expansion-panel (opened)="panelOpenState.set(true)"
                     (closed)="panelOpenState.set(false)"
-                    class="my-toogle-panel d2f-theme"
+                   [ngClass]="setNgClasses()"
                     [expanded]="panelOpenState()">
     <mat-expansion-panel-header class="my-toogle-panel-header"
     [collapsedHeight]="'1.5em'"  [expandedHeight]="'1.5em'">

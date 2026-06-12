@@ -19,3 +19,7 @@ legal-footer : conteneur affichant infos légales
 sticky-header : panneau d'entête (collé au bord haut) 
 
 sticky-footer : panneau d'entête (collé au bord bas)
+
+==============
+pas de dépendance externe css (tout en flex, ...)
+utilisation de d2f-ngx-components (toggle-panel) et material

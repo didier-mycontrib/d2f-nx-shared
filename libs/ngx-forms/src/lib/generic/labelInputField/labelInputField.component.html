@@ -1,0 +1,9 @@
+<div>
+    <label class="block text-sm">{{effectiveLabel()}}:</label>
+    @if(formRef()){
+          <input  [type]="inputType()" [formField]="formRef()[name()]" class="w-98/100" />
+          <span class="block text-red-600">{{fieldErrorMessageSignal()}}</span> 
+    }@else{
+        <input  [type]="inputType()"  [(ngModel)]="fieldData" [name]="name()" class="w-98/100" />
+    }
+</div>

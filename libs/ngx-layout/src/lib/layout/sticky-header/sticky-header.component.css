@@ -1,4 +1,4 @@
-@import  "../../common/css/d2f-common-layout.css"; 
+
 
 .my-header { background-color: white;  }
 .highlight { font-weight: bold;}
@@ -25,4 +25,59 @@
   font-size: 18px;
   height: 18px ;
   width: 18px ;
+}
+
+.flexColumnNoWrap {
+    display: flex; 
+    flex-direction: column;
+    flex-wrap : nowrap;
+}
+.flexRowNoWrap {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap : nowrap;
+   align-items : center;
+}
+
+
+.flexItem {
+    flex: 1 1 auto;
+}
+
+
+.left-text-align {
+    text-align: left;
+}
+
+.center-text-align {
+    text-align: center;
+}
+ 
+/*d'abord les regles pour tous medias et tailles */
+
+
+/* ensuite nouvelles regles pour taille > 600px de large) */
+@media screen and (min-width : 600px){
+
+    .noDisplayForLargeWidth{
+        display : none;
+    }
+
+    .noDisplayForSmallWidth{
+        display : block;
+    }
+
+}
+
+/* ensuite nouvelles regles pour taille < 600px de large) */
+@media screen and (max-width : 600px){
+
+    .noDisplayForLargeWidth{
+        display: block;
+    }
+
+    .noDisplayForSmallWidth{
+        display : none;
+    }
+
 }

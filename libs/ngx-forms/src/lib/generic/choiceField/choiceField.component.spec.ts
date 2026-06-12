@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgxCrud } from './ngx-crud';
+import { ChoiceFieldComponent } from './choiceField.component';
 
-describe('NgxCrud', () => {
-  let component: NgxCrud;
-  let fixture: ComponentFixture<NgxCrud>;
+describe('ChoiceFieldComponent', () => {
+  let component: ChoiceFieldComponent;
+  let fixture: ComponentFixture<ChoiceFieldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgxCrud],
+      imports: [ChoiceFieldComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NgxCrud);
+    fixture = TestBed.createComponent(ChoiceFieldComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

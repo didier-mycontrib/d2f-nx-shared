@@ -1,14 +1,12 @@
-@import  "../../common/css/d2f-common-layout.css"; 
 
-.withBlackBorder{
-  border : 1px solid black;
-}
-
-.withRedBorder{
-  border : 1px solid red;
+.flexItemNone {
+    flex: none; /* as 0 0 auto */
 }
 
 .flexRowNoWrap {
+     display: flex; 
+    flex-direction: row;
+    flex-wrap : wrap;
     align-items : stretch !important; /* redefinition , not center nor start nor end here */
 }
 

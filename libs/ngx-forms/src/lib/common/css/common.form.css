@@ -1,0 +1,9 @@
+
+input.ngsf-valid {
+    border-left: 5px solid #42A948; /* green */
+}
+
+input.ngsf-invalid {
+    border-left: 5px solid #a94442; /* red */
+    /*color:red;*/
+}
