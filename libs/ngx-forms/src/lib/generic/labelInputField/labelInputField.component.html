@@ -3,7 +3,7 @@
     @if(formRef()){
           <input  [type]="inputType()" [formField]="formRef()[name()]" [ngClass]="inputClass()"
                  (focus)="onFocus()"  (blur)="onBlur()" (mouseenter)="onMouseEnter()"  (mouseleave)="onMouseLeave()"/>
-          <span [style.display]="(isOver()||hasFocus())?'block':'none'" class="p-1 text-red-600">{{fieldErrorMessageSignal()}}</span> 
+          <span [style.display]="displayErr()?'block':'none'" class="p-1 text-red-600">{{fieldErrorMessageSignal()}}</span> 
     }@else{
         <input  [type]="inputType()"  [(ngModel)]="fieldData" [name]="name()" [ngClass]="inputClass()" />
     }

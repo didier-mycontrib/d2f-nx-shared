@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Product } from '../common/data/product';
 import { ProductHelper } from '../common/helper/product-helper';
 import { ProductMemService } from '../common/service/product-mem.service';
 import { GenericCrudContext , GenericCrudComponent } from 'd2f-ngx-crud';
 import { SortObjectTableComponent } from 'd2f-ngx-components';
+import { email, form, min, minLength, pattern, required, schema, SchemaOrSchemaFn, SchemaPath } from '@angular/forms/signals';
+import { FieldInfoMap } from 'd2f-ngx-forms';
 
 
 @Component({
@@ -36,6 +38,17 @@ export class ProductComponent {
     console.log("new selected object =" + JSON.stringify(selectedObject) )
    }
 
+   productDefaultInstanceModel = signal(this.objectHelper.buildEmptyObject());
+   productSchema= schema<Product>((schemaPath)=> {
+      required(schemaPath.label, {message: 'firstname is required'});
+      min(schemaPath.price, 0.0, { message: 'price must be postive' });
+    });
+    productForm = form(this.productDefaultInstanceModel,this.productSchema);
+
+
+  productFieldInfoMap : FieldInfoMap = {
+    ref : { notEditable : true}
+  }  
 
 
 

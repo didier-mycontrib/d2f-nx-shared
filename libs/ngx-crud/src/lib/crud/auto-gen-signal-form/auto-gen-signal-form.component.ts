@@ -1,8 +1,8 @@
-import { Component, input, InputSignal, model, ModelSignal } from '@angular/core';
+import { Component, input, InputSignal, model, ModelSignal, SimpleChanges } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ObjectHelper , FieldHelper } from 'd2f-ngx-util';
 import { DynamicFormComponent , FieldInfoMap, LabelInputFieldComponent, ReadOnlyFieldComponent } from 'd2f-ngx-forms';
-import { form } from '@angular/forms/signals';
+import { form, min, required, schema } from '@angular/forms/signals';
 
 @Component({
   selector: 'auto-gen-signal-form',
@@ -20,6 +20,9 @@ export class AutoGenSignalFormComponent  {
 
         modeRef = model("newOne"); //or "existingOne"
 
+        formRef = input<any>(); //optional (may be undefined)
+        mapFieldInfo=input<FieldInfoMap>({});//optional (may be empty)
+
         objectKeysArray(obj:object):any[]{
           return Reflect.ownKeys(obj);
         }
@@ -32,12 +35,12 @@ export class AutoGenSignalFormComponent  {
           return false;
          }
 
-         objectFieldInfoMap : FieldInfoMap = {
-           ref : { notEditable : true}
-        }  
-
-        objectForm = form(this.objectTempRef)
-
-       
+         ngOnChanges(changes:SimpleChanges){
+            if(this.formRef()){
+               let entityModelSignal = this.formRef()().controlValue;
+               entityModelSignal.set(this.objectTempRef());
+            }
+         }
+      
 
 }

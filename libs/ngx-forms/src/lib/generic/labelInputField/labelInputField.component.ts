@@ -1,4 +1,4 @@
-import { Component, input, signal, Signal } from '@angular/core';
+import { Component, computed, input, signal, Signal } from '@angular/core';
 import { AbstractFieldComponent } from '../abstractField';
 import { FormsModule } from '@angular/forms';
 import { FormField } from '@angular/forms/signals';
@@ -29,6 +29,16 @@ export class LabelInputFieldComponent extends AbstractFieldComponent{
  isOver=signal(false);
  hasFocus=signal(false);
 
+ displayErr = computed(()=>{ 
+   let overOrFocus= this.isOver() || this.hasFocus();
+   if(this.formRef()){
+          let invalid= !isFieldValid(this.name(),this.formRef());
+          return overOrFocus && invalid;
+   }
+   else return false
+  }
+  );
+
   onFocus(){
      this.hasFocus.set(true);
   }
@@ -44,6 +54,7 @@ export class LabelInputFieldComponent extends AbstractFieldComponent{
    onMouseLeave(){
      this.isOver.set(false);
   }
+
 
    override labelClass(){
      let labelClasses :any = super.labelClass();

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component,  inject,  input, InputSignal, OnInit, output, signal, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, Component,  inject,  input, InputSignal, OnInit, output, signal, TemplateRef, WritableSignal } from '@angular/core';
 import { GenericCrudContext } from '../GenericCrudContext';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -10,6 +10,8 @@ import { GenCrudParamComponent } from '../gen-crud-param/gen-crud-param.componen
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'd2f-ngx-components';
 import { Observable } from 'rxjs';
+import { FieldInfoMap } from 'd2f-ngx-forms';
+import { form } from '@angular/forms/signals';
 
 export interface GenericCrudState{
   selectedObject : any, //selected existing entity or null
@@ -31,6 +33,10 @@ export class GenericCrudComponent implements OnInit {
    private changeDetectorRef = inject(ChangeDetectorRef);
 
   public genericCrudContext  = input<GenericCrudContext<any,any> | null>(null);
+
+  formRef = input<any>(); //optional (may be undefined)
+  mapFieldInfo=input<FieldInfoMap>({});//optional (may be empty)
+
 
   //genericCrudService now in genericCrudContext
   genericCrudService(){

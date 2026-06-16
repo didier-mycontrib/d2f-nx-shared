@@ -13,7 +13,11 @@ import {computed_mapFieldErrorMessageSignal, DynamicFormComponent, FieldInfoMap,
 })
 export class PersonDsfComponent {
   //src/app/common/data/person.ts with PersonData interface and Person class (implements PersonData)
-  personModel = signal<PersonData>(new Person('','jean','Bon','jean.bon@xyz.com', 165,'2000-12-25'));//form data as WritableSignal
+  p1 = new Person('','jean','Bon','jean.bon@xyz.com', 165,'2000-12-25');
+  p2 = new Person('','axelle','Aire','axelle.air@xyz.com', 155,'2000-12-22')
+  persons = [this.p1,this.p2];
+  currentPersonIndex=0;
+  personModel = signal<PersonData>(this.p1);//form data as WritableSignal
       //that will be synchronized with inputs of form ([formField]="personForm.firstname" is bi-directionnal)
 
 
@@ -38,12 +42,33 @@ export class PersonDsfComponent {
     sports  :  { type: 'array' , items : ['football' , 'velo' , 'basket' , 'tennis' , 'running' , 'walk' ] },
     ref : { notEditable : true}
   }  
+
+  msgUdpated=signal("");
   
+  onInstanceSwitch(){
+     this.currentPersonIndex++;
+     if(this.currentPersonIndex>=2)this.currentPersonIndex=0;
+     this.personModel.set(this.persons[this.currentPersonIndex]);
+     this.msgUdpated.set("");
+     this.personForm().reset();
+  }
 
   messagePerson = "";
   okPerson=true;
 
-  okEffect = effect( ()=>{ this.okPerson = ! this.personForm().invalid();  this.messagePerson="" })
+  okEffect = effect( ()=>{ this.okPerson = ! this.personForm().invalid();  this.messagePerson="" ;
+  })
+
+  dirtyEffect = effect(()=>{
+    if(this.personForm().dirty())  
+      this.msgUdpated.set("changed/dirty"); 
+    else 
+      this.msgUdpated.set("");
+    });
+
+  onRefreshNoDirty(){
+      this.personForm().reset();
+  }
 
   onPerson(){
    //V1:

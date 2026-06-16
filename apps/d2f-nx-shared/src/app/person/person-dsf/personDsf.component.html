@@ -8,6 +8,9 @@
     message: <span [style.color]="okPerson?'green':'red'">{{messagePerson}}</span> 
 
  <hr/>
+ <button (click)="onInstanceSwitch()">instance switch</button> 
+ , updated : {{msgUdpated()}}  <button (click)="onRefreshNoDirty()">refresh no dirty</button>
+ <hr/>
   <h3>variante avec fieldLayout='row'</h3> 
   <ngx-dynamic-form  fieldLayout='row' [formRef]="personForm" 
                     [mapFieldInfo]="personFieldInfoMap"></ngx-dynamic-form>

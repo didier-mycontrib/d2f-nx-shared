@@ -1,4 +1,4 @@
-import { Component, effect, input, InputSignal, model, ModelSignal, output, TemplateRef } from '@angular/core';
+import { Component, effect, input, InputSignal, model, ModelSignal, output, SimpleChanges, TemplateRef } from '@angular/core';
 import { TogglePanelComponent } from 'd2f-ngx-components';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,6 +9,7 @@ import { AbstractGenSubFormData } from '../abstract/AbstractGenSubFormData';
 import { cloneObject } from 'd2f-ngx-util';
 import { ObjectHelper , FieldHelper } from 'd2f-ngx-util';
 import { AutoGenSignalFormComponent } from '../auto-gen-signal-form/auto-gen-signal-form.component';
+import { FieldInfoMap } from 'd2f-ngx-forms';
 /*
 Sous composant servant à :
   - éditer les partie d'un objet
@@ -42,6 +43,21 @@ export class GenCrudFormComponent {
 
     optionalSpecificSubFormTemplateRef = input<TemplateRef<any>>();
 
+    formRef = input<any>(); //optional (may be undefined)
+    mapFieldInfo=input<FieldInfoMap>({});//optional (may be empty)
+    /*
+  sForm! : any;//optional signalForm to build with sFormSchema and objectTemp
+  sTempEntity = signal<any>(undefined);
+    formRef = input<any>(); //optional (may be undefined)
+  */
+/*
+     refreshSForm(){
+    if(this.objectTemp){
+      this.sTempEntity.set(this.objectTemp);
+      this.sForm=form(this.sTempEntity,this.sFormSchema);
+    }
+  }*/
+
     subFormData : AbstractGenSubFormData = 
      { obj: this.objectTempRef(),
       mode : this.modeRef()
@@ -54,7 +70,7 @@ export class GenCrudFormComponent {
 
     originalObjectTemp : any = null;
 
-    ngOnChanges(){
+    ngOnChanges(changes:SimpleChanges){
       this.originalObjectTemp = cloneObject(this.objectTempRef()); //for detect change attempt
       this.subFormData.obj=this.objectTempRef();
       this.subFormData.mode = this.modeRef();
