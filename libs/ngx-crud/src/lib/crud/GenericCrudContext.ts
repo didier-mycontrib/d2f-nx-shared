@@ -1,7 +1,7 @@
 import { filter, Observable, of, switchMap, tap, throwError, toArray } from 'rxjs';
 import { GenericCrudService } from '../common/service/generic-crud-service';
 import { FilterDef } from '../common/data/filter-def';
-import { ObjectHelper } from '../common/helper/object-helper';
+import { ObjectHelper , FieldHelper } from 'd2f-ngx-util';
 import { GenericCrudHelper } from './abstract/GenericCrudHelper';
 
 interface PrepareFormaDataFn{

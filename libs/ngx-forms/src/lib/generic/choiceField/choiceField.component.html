@@ -1,5 +1,5 @@
 <div>
-    <label class="block text-sm">{{effectiveLabel()}}:</label>
+    <label [ngClass]="labelClass()">{{effectiveLabel()}}:</label>
     @if(!bigChoice){
        @if(formRef()){
            @for(v of items(); track v){
@@ -12,13 +12,13 @@
     }
     }@else{
          @if(formRef()){
-          <select [formField]="formRef()[name()]" >
+          <select [formField]="formRef()[name()]" class="ml-1">
               @for(v of items(); track v){
                 <option>{{v}}</option>
               }
           </select>
         }@else{
-          <select [(ngModel)]="fieldData" [name]="name()" >
+          <select [(ngModel)]="fieldData" [name]="name()" class="ml-1">
                @for(v of items(); track v){
                 <option>{{v}}</option>
               }

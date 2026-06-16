@@ -1,7 +1,8 @@
 <h3> template driven Form (person) </h3>
 
- <form #personTemplateDrivenForm="ngForm" class="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-3">
+ <form #personTemplateDrivenForm="ngForm" class="p-1 grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-3">
    
+     <ngx-read-only-field [(fieldData)]="personData.ref" name="ref"  ></ngx-read-only-field>
      <ngx-label-input-field [(fieldData)]="personData.firstname" name="firstname"  ></ngx-label-input-field>
      <ngx-label-input-field [(fieldData)]="personData.lastname" name="lastname" label="last_name" ></ngx-label-input-field>
     <!--
@@ -22,6 +23,34 @@
       [items]="['velo' , 'football' , 'tennis' , 'basket' ]" ></ngx-many-select-field>
 </form>
  
-   
     <input type="button" value="login" [disabled]="!personTemplateDrivenForm.form.valid" (click)="onPerson()" /> <br/>
+    message: <span [style.color]="okPerson?'green':'red'">{{messagePerson}}</span> 
+
+<hr/>
+    <h3>variante avec fieldLayout='row'</h3>
+
+    <form #personTemplateDrivenForm2="ngForm" class="p-1 grid grid-cols-1  xl:grid-cols-2 gap-x-3 sm:gap-y-3 md:gap-y-1">
+   
+     <ngx-read-only-field fieldLayout='row' [(fieldData)]="personData.ref" name="ref"  ></ngx-read-only-field>
+     <ngx-label-input-field fieldLayout='row' [(fieldData)]="personData.firstname" name="firstname"  ></ngx-label-input-field>
+     <ngx-label-input-field fieldLayout='row' [(fieldData)]="personData.lastname" name="lastname" label="last_name" ></ngx-label-input-field>
+    <!--
+    <div>
+        <label class="block text-sm">lastname:</label>
+        <input [(ngModel)]="personData.lastname" name="lastname"  class="w-full" />
+        <span class="text-red-600"></span>
+    </div>
+    -->
+    <ngx-label-input-field fieldLayout='row' [(fieldData)]="personData.email" name="email"  ></ngx-label-input-field>
+    <ngx-label-input-field fieldLayout='row' [(fieldData)]="personData.taille" name="taille" inputType="number" ></ngx-label-input-field>
+    <ngx-label-input-field fieldLayout='row' [(fieldData)]="personData.birthday" name="birthday" inputType="date" ></ngx-label-input-field>
+     <ngx-boolean-field fieldLayout='row' [(fieldData)]="personData.celibataire" name="celibataire" label="situation"></ngx-boolean-field>
+    <ngx-choice-field fieldLayout='row' [(fieldData)]="personData.genre" name="genre"  [pseudoEnum]="Genre" ></ngx-choice-field>
+    <ngx-choice-field fieldLayout='row' [(fieldData)]="personData.nationalite" name="nationalite"
+       [items]="['francais','europeen','autre']" ></ngx-choice-field>
+    <ngx-many-select-field  fieldLayout='row' [(fieldData)]="personData.sports" name="sports"  
+      [items]="['velo' , 'football' , 'tennis' , 'basket' ]" ></ngx-many-select-field>
+</form>
+ 
+    <input type="button" value="login" [disabled]="!personTemplateDrivenForm2.form.valid" (click)="onPerson()" /> <br/>
     message: <span [style.color]="okPerson?'green':'red'">{{messagePerson}}</span> 

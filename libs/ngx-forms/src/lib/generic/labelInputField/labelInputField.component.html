@@ -1,9 +1,10 @@
-<div>
-    <label class="block text-sm">{{effectiveLabel()}}:</label>
+<div >
+    <label [ngClass]="labelClass()" >{{effectiveLabel()}}:</label>
     @if(formRef()){
-          <input  [type]="inputType()" [formField]="formRef()[name()]" class="w-98/100" />
-          <span class="block text-red-600">{{fieldErrorMessageSignal()}}</span> 
+          <input  [type]="inputType()" [formField]="formRef()[name()]" [ngClass]="inputClass()"
+                 (focus)="onFocus()"  (blur)="onBlur()" (mouseenter)="onMouseEnter()"  (mouseleave)="onMouseLeave()"/>
+          <span [style.display]="(isOver()||hasFocus())?'block':'none'" class="p-1 text-red-600">{{fieldErrorMessageSignal()}}</span> 
     }@else{
-        <input  [type]="inputType()"  [(ngModel)]="fieldData" [name]="name()" class="w-98/100" />
+        <input  [type]="inputType()"  [(ngModel)]="fieldData" [name]="name()" [ngClass]="inputClass()" />
     }
 </div>

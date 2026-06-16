@@ -3,6 +3,7 @@ export * from './lib/generic/confirm-dialog/confirm-dialog.component'
 export * from './lib/generic/input-dialog/input-dialog.component'
 export * from './lib/generic/message-popup/message-popup.component'
 export * from './lib/generic/my-mat-toggle-panel/my-mat-toggle-panel.component'
+export * from './lib/generic/sort-object-table/sort-object-table.component';
 export * from './lib/generic/template-dialog/template-dialog.component'
 export * from './lib/generic/simple/simple-popup/simple-popup.component'
 export * from './lib/generic/my-message/my-message.component'

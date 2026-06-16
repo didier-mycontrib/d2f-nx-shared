@@ -2,10 +2,11 @@ import { Component, input } from '@angular/core';
 import { AbstractFieldComponent } from '../abstractField';
 import { FormsModule } from '@angular/forms';
 import { FormField } from '@angular/forms/signals';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'ngx-choice-field',
-  imports: [FormsModule,FormField],
+  imports: [FormsModule,FormField,NgClass],
   templateUrl: './choiceField.component.html',
   styleUrl: './choiceField.component.css',
 })

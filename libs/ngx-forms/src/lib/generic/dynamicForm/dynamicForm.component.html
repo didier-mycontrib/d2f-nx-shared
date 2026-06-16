@@ -1,25 +1,34 @@
-<form novalidate class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+<form novalidate class="p-1 grid grid-cols-1"  [ngClass]="dynFormCssClass()">
  @for( key of objectKeysArray(entityModel); track key){
+  @if(mapFieldInfo()[key].notEditable){
+     <ngx-read-only-field [formRef]="formRef()" [fieldLayout]="fieldLayout()" 
+     [name]="key" [label]="mapFieldInfo()[key].label" ></ngx-read-only-field>
+ }@else{
    @switch(mapFieldInfo()[key].type){
        @case("boolean"){
-            <ngx-boolean-field [formRef]="formRef()" [name]="key" [label]="mapFieldInfo()[key].label" ></ngx-boolean-field>
+            <ngx-boolean-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"  
+            [name]="key" [label]="mapFieldInfo()[key].label" ></ngx-boolean-field>
        }
        @case("array"){
-            <ngx-many-select-field [formRef]="formRef()" [name]="key" [label]="mapFieldInfo()[key].label" [items]="mapFieldInfo()[key].items??[]" ></ngx-many-select-field>
+            <ngx-many-select-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
+             [name]="key" [label]="mapFieldInfo()[key].label" [items]="mapFieldInfo()[key].items??[]" ></ngx-many-select-field>
        }
        @default{
             @if(mapFieldInfo()[key].pseudoEnum){
-                 <ngx-choice-field [formRef]="formRef()" [name]="key" [pseudoEnum]="mapFieldInfo()[key].pseudoEnum"></ngx-choice-field>
+                 <ngx-choice-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
+                  [name]="key" [pseudoEnum]="mapFieldInfo()[key].pseudoEnum"></ngx-choice-field>
             }
             @if(mapFieldInfo()[key].items){
-                 <ngx-choice-field [formRef]="formRef()" [name]="key" [items]="mapFieldInfo()[key].items??[]"></ngx-choice-field>
+                 <ngx-choice-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
+                  [name]="key" [items]="mapFieldInfo()[key].items??[]"></ngx-choice-field>
             }
             @if(!mapFieldInfo()[key].pseudoEnum! && !mapFieldInfo()[key].items){
-                 <ngx-label-input-field [formRef]="formRef()" [name]="key"
-                     [inputType]="mapFieldInfo()[key].type??'text'"></ngx-label-input-field>
+                 <ngx-label-input-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
+                  [name]="key"  [inputType]="mapFieldInfo()[key].type??'text'"></ngx-label-input-field>
             }
        }
    }
+  }
 }
 </form>
 

@@ -6,3 +6,8 @@
     <!-- person : <span [style.color]="okPerson?'green':'red'">{{ personModel() | json }}</span> <br/> -->
     <input type="button" value="login" [disabled]="personForm().invalid()" (click)="onPerson()" /> <br/>
     message: <span [style.color]="okPerson?'green':'red'">{{messagePerson}}</span> 
+
+ <hr/>
+  <h3>variante avec fieldLayout='row'</h3> 
+  <ngx-dynamic-form  fieldLayout='row' [formRef]="personForm" 
+                    [mapFieldInfo]="personFieldInfoMap"></ngx-dynamic-form>

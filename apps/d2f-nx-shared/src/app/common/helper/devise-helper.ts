@@ -1,5 +1,5 @@
 
-import {AbstractObjectHelper, FieldHelper } from "d2f-ngx-crud";
+import {AbstractObjectHelper, FieldHelper } from "d2f-ngx-util";
 import { Devise } from "../data/devise";
 
 export class DeviseHelper extends AbstractObjectHelper<Devise,String> {

@@ -22,6 +22,7 @@ export type Genre = typeof Genre[keyof typeof Genre];
 
 
 export interface PersonData {
+  ref:string; 
   firstname: string;
   lastname: string;
   email: string;
@@ -34,7 +35,10 @@ export interface PersonData {
 }
 
 export class Person implements PersonData {
+     static last_num : number = 0; //for simple (in memory auto_incr)
+
      constructor(
+       public ref : string = "",
        public  firstname : string ="",
        public  lastname : string ="",
        public  email : string ="",
@@ -43,5 +47,10 @@ export class Person implements PersonData {
        public celibataire : boolean=true,
        public genre : Genre = Genre.INCONNU,
        public  nationalite : string ="",
-       public sports: string[]=[]){}
+       public sports: string[]=[]){
+        if(this.ref==""){
+          Person.last_num = Person.last_num+1;
+          this.ref = "p_" + Person.last_num;
+        }
+       }
 }

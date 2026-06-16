@@ -7,8 +7,8 @@ import { MyImportMaterialModule } from '../../common/imports/my-import-material.
 import { AutomaticGenSubFormComponent } from '../automatic-gen-sub-form/automatic-gen-sub-form.component';
 import { AbstractGenSubFormData } from '../abstract/AbstractGenSubFormData';
 import { cloneObject } from 'd2f-ngx-util';
-import { ObjectHelper } from '../../common/helper/object-helper';
-
+import { ObjectHelper , FieldHelper } from 'd2f-ngx-util';
+import { AutoGenSignalFormComponent } from '../auto-gen-signal-form/auto-gen-signal-form.component';
 /*
 Sous composant servant à :
   - éditer les partie d'un objet
@@ -18,7 +18,7 @@ Sous composant servant à :
 
 @Component({
   selector: 'gen-crud-form',
-  imports: [CommonModule, FormsModule, AutomaticGenSubFormComponent,
+  imports: [CommonModule, FormsModule, AutomaticGenSubFormComponent,AutoGenSignalFormComponent,
            TogglePanelComponent, MyMessageComponent,
           MyImportMaterialModule ],
   templateUrl: './gen-crud-form.component.html',

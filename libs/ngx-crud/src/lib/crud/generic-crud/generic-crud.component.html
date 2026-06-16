@@ -5,8 +5,8 @@
 
 <div class="flexRowWrap mb-1 mt-1">
     <div class="flexItem m-1" >
-  
-        <gen-crud-table
+   
+        <sort-object-table
           [tabObjectsRef]="genericCrudContext()!.tabObjects"
           [essentialKeysArrayRef]="classHelper().essentialFieldNames"
           [(selectedObjectRef)]="selectedObject"
@@ -14,7 +14,8 @@
           [(messageRef)]="collectionMessage"
           [objectHelperRef]="objectHelper()"
           >
-       </gen-crud-table>
+       </sort-object-table>
+      
      </div> <!-- end of flexItem -->
 
      <div class="flexItem m-1" >

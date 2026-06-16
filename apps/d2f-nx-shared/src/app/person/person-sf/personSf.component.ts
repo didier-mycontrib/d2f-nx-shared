@@ -2,19 +2,19 @@ import { NgClass, JsonPipe } from '@angular/common';
 import { Component, computed, effect, Signal, signal } from '@angular/core';
 import { email, form, FormField, min, minLength, pattern, required, ValidationError , FieldTree} from '@angular/forms/signals';
 import { Genre, Person, PersonData } from '../../common/data/person';
-import {BooleanFieldComponent, ChoiceFieldComponent, computed_mapFieldErrorMessageSignal, DynamicFormComponent, isFieldValid, LabelInputFieldComponent, ManySelectFieldComponent} from 'd2f-ngx-forms';
+import {BooleanFieldComponent, ChoiceFieldComponent, computed_mapFieldErrorMessageSignal, DynamicFormComponent, isFieldValid, LabelInputFieldComponent, ManySelectFieldComponent, ReadOnlyFieldComponent} from 'd2f-ngx-forms';
 
 
 @Component({
   selector: 'app-person-sf',
   imports: [FormField,NgClass,JsonPipe,DynamicFormComponent,
-          LabelInputFieldComponent,BooleanFieldComponent,ChoiceFieldComponent,ManySelectFieldComponent],
+          LabelInputFieldComponent,BooleanFieldComponent,ChoiceFieldComponent,ManySelectFieldComponent,ReadOnlyFieldComponent],
   templateUrl: './personSf.component.html',
   styleUrl: './personSf.component.css',
 })
 export class PersonSfComponent {
   //src/app/common/data/person.ts with PersonData interface and Person class (implements PersonData)
-  personModel = signal<PersonData>(new Person('jean','Bon','jean.bon@xyz.com', 165 , '2000-12-25'));//form data as WritableSignal
+  personModel = signal<PersonData>(new Person('','jean','Bon','jean.bon@xyz.com', 165 , '2000-12-25'));//form data as WritableSignal
       //that will be synchronized with inputs of form ([formField]="personForm.firstname" is bi-directionnal)
 
 

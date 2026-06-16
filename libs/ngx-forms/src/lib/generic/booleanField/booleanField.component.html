@@ -1,6 +1,6 @@
 <div>
     @if(label()){
-        <label class="block text-sm">{{label()}}:</label>
+        <label [ngClass]="labelClass()">{{label()}}:</label>
     }
     @if(formRef()){
         <input type="checkbox" [formField]="formRef()[name()]" >

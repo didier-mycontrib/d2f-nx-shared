@@ -4,5 +4,6 @@ export * from './lib/generic/dynamicForm/dynamicForm.component';
 export * from './lib/generic/abstractField';
 export * from './lib/generic/booleanField/booleanField.component';
 export * from './lib/generic/labelInputField/labelInputField.component';
+export * from './lib/generic/readOnlyField/readOnlyField.component';
 export * from './lib/generic/choiceField/choiceField.component';
 export * from './lib/generic/manySelectField/manySelectField.component';

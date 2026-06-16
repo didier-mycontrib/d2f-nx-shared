@@ -1,2 +1,13 @@
 <generic-crud  [genericCrudContext]="genericCrudContext">
 </generic-crud>
+
+<hr/>
+<!-- essai direct temporaire du composant sort-object-table -->
+ <sort-object-table
+          [tabObjectsRef]="tempProducts"
+          [essentialKeysArrayRef]="['ref','label','price']"
+          [(selectedObjectRef)]="selectedObject"
+          (selectedObjectRefChange)="onSelectObject(selectedObject)"
+          [(messageRef)]="collectionMessage"
+          [objectHelperRef]="objectHelper"
+          >

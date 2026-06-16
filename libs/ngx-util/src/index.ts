@@ -3,5 +3,8 @@ export * from './lib/common/directive/highlight-border-over.directive';
 export * from './lib/common/service/my-storage-util.service';
 export * from './lib/common/util/errors';
 export * from './lib/common/util/objects';
+export * from './lib/common/helper/field-helper';
+export * from './lib/common/helper/class-helper';
+export * from './lib/common/helper/object-helper';
 //export * from './lib/common/util/cookies';
 export * from './lib/common/util/util';

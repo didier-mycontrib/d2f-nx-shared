@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { GenericCrudService, GenericWithUploadService } from '../../common/service/generic-crud-service';
 import { cloneObject, copyObjectProperties, messageFromError } from 'd2f-ngx-util';
-import { GenCrudTableComponent } from '../gen-crud-table/gen-crud-table.component';
+import { SortObjectTableComponent } from 'd2f-ngx-components';
 import { GenCrudFormComponent } from '../gen-crud-form/gen-crud-form.component';
 import { GenCrudParamComponent } from '../gen-crud-param/gen-crud-param.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -21,7 +21,7 @@ export interface GenericCrudState{
 @Component({
   selector: 'generic-crud',
   imports:[CommonModule,FormsModule,
-    GenCrudTableComponent,
+    SortObjectTableComponent,
     GenCrudFormComponent,GenCrudParamComponent],
   templateUrl: './generic-crud.component.html',
   styleUrls: ['./generic-crud.component.css']

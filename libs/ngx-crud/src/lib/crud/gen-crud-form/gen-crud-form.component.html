@@ -8,11 +8,20 @@
            [ngTemplateOutletContext]="{subFormData : subFormData}" ></ng-container>
         }
         @else{
+          <!--
         <app-automatic-gen-sub-form    
              [(objectTempRef)]="objectTempRef"
              [objectHelperRef]="objectHelperRef()"
              [(modeRef)]="modeRef">
         </app-automatic-gen-sub-form>
+    -->
+        
+            <auto-gen-signal-form    
+             [(objectTempRef)]="objectTempRef"
+             [objectHelperRef]="objectHelperRef()"
+             [(modeRef)]="modeRef">
+        </auto-gen-signal-form>
+         
         }
          <div class="flexRowWrap">
              <div class="f-align">

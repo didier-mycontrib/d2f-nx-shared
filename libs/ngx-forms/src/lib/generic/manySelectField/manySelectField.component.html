@@ -1,18 +1,20 @@
-<div>
-    <label class="block text-sm">{{effectiveLabel()}}:</label>
+<div >
+    <label [ngClass]="labelClass()">{{effectiveLabel()}}:</label>
     @if(!bigChoice){
           @for(v of items(); track v){
-             <label><input type="checkbox"  [(ngModel)]="selectionMap[v]" (ngModelChange)="onSelectedBoxChange()" name="{{name()}}_{{v}}" >{{v}}</label>&nbsp;
+             <label><input type="checkbox"  [(ngModel)]="selectionMap[v]" 
+                (ngModelChange)="onSelectedBoxChange()" name="{{name()}}_{{v}}" >{{v}}</label>&nbsp;
           }
     }@else{
          @if(formRef()){
-         <select [(ngModel)]="selectedItems" [name]="name()" (ngModelChange)="onSelectedItemChange()" multiple> <!-- ok -->
+         <select class="ml-1" [(ngModel)]="selectedItems" [name]="name()" 
+                 (ngModelChange)="onSelectedItemChange()" multiple> <!-- ok -->
                @for(v of items(); track v){
                 <option>{{v}}</option>
               }
           </select>
         }@else{
-          <select [(ngModel)]="fieldData" [name]="name()" multiple>
+          <select class="ml-1" [(ngModel)]="fieldData" [name]="name()" multiple>
                @for(v of items(); track v){
                 <option>{{v}}</option>
               }

@@ -1,5 +1,5 @@
 import { Observable, throwError } from "rxjs";
-import { ObjectHelper } from "../common/helper/object-helper";
+import { ObjectHelper , FieldHelper } from 'd2f-ngx-util';
 import { GenericCrudHelper } from "./abstract/GenericCrudHelper";
 import { GenericCrudContext } from "./GenericCrudContext";
 

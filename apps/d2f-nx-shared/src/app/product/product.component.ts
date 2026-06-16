@@ -3,11 +3,12 @@ import { Product } from '../common/data/product';
 import { ProductHelper } from '../common/helper/product-helper';
 import { ProductMemService } from '../common/service/product-mem.service';
 import { GenericCrudContext , GenericCrudComponent } from 'd2f-ngx-crud';
+import { SortObjectTableComponent } from 'd2f-ngx-components';
 
 
 @Component({
   selector: 'app-product',
-  imports: [GenericCrudComponent],
+  imports: [GenericCrudComponent,SortObjectTableComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
@@ -22,6 +23,21 @@ export class ProductComponent {
       new GenericCrudContext<Product,String|null>(this.objectHelper,
                                                  this.productService);
    }
+
+   tempProducts = [
+    new Product("p1","cahier" , 2.1 , "grand cahier"),
+    new Product("p2","stylo" , 1.1 , "stylo bille bleu"),
+   ]
+
+   selectedObject : Product | null = null;
+   collectionMessage="";
+
+   onSelectObject(selectedObject:Product|null){
+    console.log("new selected object =" + JSON.stringify(selectedObject) )
+   }
+
+
+
 
 
 }

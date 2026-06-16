@@ -13,7 +13,7 @@ import {computed_mapFieldErrorMessageSignal, DynamicFormComponent, FieldInfoMap,
 })
 export class PersonDsfComponent {
   //src/app/common/data/person.ts with PersonData interface and Person class (implements PersonData)
-  personModel = signal<PersonData>(new Person('jean','Bon','jean.bon@xyz.com', 165,'2000-12-25'));//form data as WritableSignal
+  personModel = signal<PersonData>(new Person('','jean','Bon','jean.bon@xyz.com', 165,'2000-12-25'));//form data as WritableSignal
       //that will be synchronized with inputs of form ([formField]="personForm.firstname" is bi-directionnal)
 
 
@@ -35,7 +35,8 @@ export class PersonDsfComponent {
     genre : { pseudoEnum : this.Genre },
     nationalite : { items : [ 'francais' , 'allemand' , 'anglais' , 'espagnol' , 
                               'italien' , 'belge' , 'portugais' , 'autrichien' , 'polonais']},
-    sports  :  { type: 'array' , items : ['football' , 'velo' , 'basket' , 'tennis' , 'running' , 'walk' ] }
+    sports  :  { type: 'array' , items : ['football' , 'velo' , 'basket' , 'tennis' , 'running' , 'walk' ] },
+    ref : { notEditable : true}
   }  
   
 

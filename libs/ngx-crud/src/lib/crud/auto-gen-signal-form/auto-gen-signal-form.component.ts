@@ -1,15 +1,17 @@
 import { Component, input, InputSignal, model, ModelSignal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ObjectHelper , FieldHelper } from 'd2f-ngx-util';
+import { DynamicFormComponent , FieldInfoMap, LabelInputFieldComponent, ReadOnlyFieldComponent } from 'd2f-ngx-forms';
+import { form } from '@angular/forms/signals';
 
 @Component({
-  selector: 'app-automatic-gen-sub-form',
+  selector: 'auto-gen-signal-form',
   standalone : true,
-  imports: [FormsModule],
-  templateUrl: './automatic-gen-sub-form.component.html',
-  styleUrl: './automatic-gen-sub-form.component.css'
+  imports: [FormsModule,DynamicFormComponent,LabelInputFieldComponent,ReadOnlyFieldComponent],
+  templateUrl: './auto-gen-signal-form.component.html',
+  styleUrl: './auto-gen-signal-form.component.css'
 })
-export class AutomaticGenSubFormComponent  {
+export class AutoGenSignalFormComponent  {
 
     //[(ngModel)]="deviseTempRef()!.code" , ....
         objectTempRef :ModelSignal<any> = model(null);
@@ -29,5 +31,13 @@ export class AutomaticGenSubFormComponent  {
           if(this.modeRef()!="newOne") return true;
           return false;
          }
+
+         objectFieldInfoMap : FieldInfoMap = {
+           ref : { notEditable : true}
+        }  
+
+        objectForm = form(this.objectTempRef)
+
+       
 
 }

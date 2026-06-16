@@ -1,4 +1,4 @@
-import { ObjectHelper } from "../../common/helper/object-helper";
+import { ObjectHelper , FieldHelper } from 'd2f-ngx-util';
 import { GenericCrudHelper } from "./GenericCrudHelper";
 
 export interface GenericCrudAbstractContextHelper<T,I> {

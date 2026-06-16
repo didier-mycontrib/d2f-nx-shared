@@ -2,10 +2,11 @@ import { Component, input } from '@angular/core';
 import { AbstractFieldComponent } from '../abstractField';
 import { FormsModule } from '@angular/forms';
 import { FormField } from '@angular/forms/signals';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'ngx-many-select-field',
-  imports: [FormsModule,FormField],
+  imports: [FormsModule,FormField,NgClass],
   templateUrl: './manySelectField.component.html',
   styleUrl: './manySelectField.component.css',
 })

@@ -1,5 +1,5 @@
 
-import {AbstractObjectHelper, FieldHelper } from "d2f-ngx-crud";
+import {AbstractObjectHelper, FieldHelper } from "d2f-ngx-util";
 import { Product } from "../data/product";
 
 export class ProductHelper extends AbstractObjectHelper<Product,String|null> {
