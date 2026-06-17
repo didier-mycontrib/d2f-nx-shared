@@ -1,0 +1,27 @@
+<div  class="grid grid-cols-1 xl:grid-cols-2 gap-x-3 gap-y-1">
+@for( key of objectKeysArray(objectTempRef()); track key){
+       @if(isNoEditableId(key)){
+        <ngx-read-only-field [(fieldData)]="objectTempRef()[key]" [name]="key" fieldLayout="row" ></ngx-read-only-field>
+       }@else {
+       <ngx-label-input-field [(fieldData)]="objectTempRef()[key]" [name]="key" fieldLayout="row" ></ngx-label-input-field> 
+       }
+    }
+</div>
+
+
+
+
+<!--
+@for( key of objectKeysArray(objectTempRef()); track key){
+    <div class="flexRowWrap" > 
+    <label class="f-align">{{key}}:</label>
+    <div class="f-align">
+       @if(isNoEditableId(key)){
+        <label class="f-max-size  mb-1">{{objectTempRef()[key]}}</label>
+       }@else {
+        <input  [name]="key" class="f-max-size  mb-1" [(ngModel)]="objectTempRef()[key]" required />
+       }
+    </div>       
+  </div>
+}
+-->

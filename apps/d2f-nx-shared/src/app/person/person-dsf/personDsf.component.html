@@ -8,7 +8,7 @@
     message: <span [style.color]="okPerson?'green':'red'">{{messagePerson}}</span> 
 
  <hr/>
- <button (click)="onInstanceSwitch()">instance switch</button> 
+ <button (click)="onInstanceSwitch()">instance switch</button> , valid: {{sValid()}} 
  , updated : {{msgUdpated()}}  <button (click)="onRefreshNoDirty()">refresh no dirty</button>
  <hr/>
   <h3>variante avec fieldLayout='row'</h3> 

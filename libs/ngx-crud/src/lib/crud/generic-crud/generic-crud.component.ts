@@ -55,11 +55,13 @@ export class GenericCrudComponent implements OnInit {
 
   //this.genericCrudContext?.tabObjects of type T[]
 
-  selectedObject : any ;
+  //selectedObject : any ;
+  sSelectedObject = signal<any>(undefined);
  
 
   //[(ngModel)]="deviseTemp.code" , ....
-  objectTemp : any = null;
+  //objectTemp : any = null;
+  sObjectTemp = signal<any>(null);
   
   //collectionMessage /*: string*/ ="";
   //formMessage/*: string*/ ="";
@@ -87,7 +89,7 @@ export class GenericCrudComponent implements OnInit {
                               this.changeDetectorRef.markForCheck(); } ,
        error: (err)=>{ this.collectionMessage.set(messageFromError(err,"erreur: echec rechargement liste via filtre")); }
     });
-    this.objectTemp=this.objectHelper().buildEmptyObject();
+    this.sObjectTemp.set(this.objectHelper().buildEmptyObject());
   }
 
   ngOnInit(): void {
@@ -103,11 +105,15 @@ export class GenericCrudComponent implements OnInit {
                               this.changeDetectorRef.markForCheck(); } ,
        error: (err)=>{ this.collectionMessage.set(messageFromError(err,"erreur: echec chargement liste (unauthorized?)")); }
     });
-    this.objectTemp=this.objectHelper().buildEmptyObject();
+    this.sObjectTemp.set(this.objectHelper().buildEmptyObject());
     this.fireGenericCrudStateChangeEvent("onInit");
   }
 
   onActionEvent(actionType:string){
+    if(this.formRef() && (actionType=="add" || actionType=="update")){
+      //console.log("***" + JSON.stringify(this.formRef()().controlValue()));
+      this.sObjectTemp.set(cloneObject(this.formRef()().controlValue()));
+    }
     switch(actionType){
       case "new": this.onNew(); break;
       case "add": this.onAdd(); break;
@@ -118,15 +124,15 @@ export class GenericCrudComponent implements OnInit {
 
   fireGenericCrudStateChangeEvent(lastAction:string|null=null){
      this.genericCrudStateChange.emit(
-            {selectedObject:this.selectedObject,
-             objectTemp:this.objectTemp,
+            {selectedObject:this.sSelectedObject(),
+             objectTemp:this.sObjectTemp(),
              mode:this.mode,lastAction:lastAction})
   }
 
   onNew(){
-    this.selectedObject=undefined; this.mode='newOne';
+    this.sSelectedObject.set(undefined); this.mode='newOne';
     this.formMessage.set("new one (to edit before add)");
-    this.objectTemp = this.objectHelper().buildEmptyObject();
+    this.sObjectTemp.set(this.objectHelper().buildEmptyObject());
     this.fireGenericCrudStateChangeEvent("onNew");
   }
 
@@ -146,7 +152,7 @@ export class GenericCrudComponent implements OnInit {
     }
     else {
       //standard/ordinary post request
-      postResponseObservable = this.genericCrudService()?.postEntityObject$(this.objectTemp) ?? null;
+      postResponseObservable = this.genericCrudService()?.postEntityObject$(this.sObjectTemp()) ?? null;
     }
     if(postResponseObservable)
       postResponseObservable.subscribe(
@@ -162,6 +168,9 @@ export class GenericCrudComponent implements OnInit {
 
   addClientSide(savedObject:any){
     this.genericCrudContext()?.tabObjects.push(savedObject);
+
+    //this.sSelectedObject.set(savedObject); this.mode='existingOne';
+      //or
     this.onNew();
   }
 
@@ -176,8 +185,8 @@ export class GenericCrudComponent implements OnInit {
   }
 
   onDelete(){
-    if(this.selectedObject){
-         let id = this.objectHelper().getId(this.selectedObject);
+    if(this.sSelectedObject()){
+         let id = this.objectHelper().getId(this.sSelectedObject());
          this.genericCrudContext()?.onDeleteObject$(id)
              .subscribe(
               { next: ()=>{ this.collectionMessage.set(this.classHelper().entityName + " deleted");
@@ -191,9 +200,9 @@ export class GenericCrudComponent implements OnInit {
   }
 
   deleteClientSide(){
-    if(this.selectedObject){
+    if(this.sSelectedObject()){
       let indexToDelete = -1;
-      this.genericCrudContext()?.tabObjects.forEach((obj,index)=>{if(obj==this.selectedObject) indexToDelete=index; });
+      this.genericCrudContext()?.tabObjects.forEach((obj,index)=>{if(obj==this.sSelectedObject()) indexToDelete=index; });
       if(indexToDelete>=0){
         this.genericCrudContext()?.tabObjects.splice(indexToDelete,1);
       }
@@ -202,7 +211,7 @@ export class GenericCrudComponent implements OnInit {
   }
 
   onUpdate(){
-    this.genericCrudContext()?.onUpdateObject$(this.objectTemp)
+    this.genericCrudContext()?.onUpdateObject$(this.sObjectTemp())
     .subscribe(
      { next: (updatedObject)=>{  this.formMessage.set(this.classHelper().entityName + " updated");
                    this.collectionMessage.set(this.formMessage());
@@ -213,11 +222,11 @@ export class GenericCrudComponent implements OnInit {
 
   updateClientSide(updatedObject:any){
   //test imposé par typescript sur this.selectedObject potentiellement undefined
-   if(this.selectedObject != undefined){
+   if(this.sSelectedObject() != undefined){
     //Rappel: this.selectedObject est ici une référence
     //qui pointe directement sur le i eme objet du tableau this.tabObjects
     //(selon ligne sélectionnée)
-        copyObjectProperties(updatedObject, this.selectedObject);
+        copyObjectProperties(updatedObject, this.sSelectedObject());
    }
   }
 
@@ -227,11 +236,11 @@ export class GenericCrudComponent implements OnInit {
     //NB: o:any est passé par référence (comportement de java/javascript)
     //et donc ici o et this.selectedObject référencent
     //directement un des objets du tableau this.tabObjects
-      this.selectedObject = o;  this.mode='existingOne';
+      this.sSelectedObject.set(o);  this.mode='existingOne';
       //via un clonage explicite , this.objectTemp est une copie
       //indépendante de this.selectedObject (et pas une référence sur l'objet original)
-      this.objectTemp = cloneObject(this.selectedObject);
-      let id = this.objectHelper().getId(this.selectedObject);
+      this.sObjectTemp.set(cloneObject(this.sSelectedObject()));
+      let id = this.objectHelper().getId(this.sSelectedObject());
       this.collectionMessage.set(id + " selected");
       this.formMessage.set("current "+ this.classHelper().entityName + "=" + id);
       this.fireGenericCrudStateChangeEvent("onSelected");
@@ -253,7 +262,7 @@ export class GenericCrudComponent implements OnInit {
     if(this.classHelper().idKeyName != attrName) return false;
     /* else is key attr*/
     if(this.classHelper().withAutoGeneratedId)return true;
-    if(this.selectedObject!=null) return true;
+    if(this.sSelectedObject()!=null) return true;
     return false;
    }
 

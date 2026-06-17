@@ -59,6 +59,8 @@ export class PersonDsfComponent {
   okEffect = effect( ()=>{ this.okPerson = ! this.personForm().invalid();  this.messagePerson="" ;
   })
 
+  sValid = computed (()=> this.personForm().valid());
+
   dirtyEffect = effect(()=>{
     if(this.personForm().dirty())  
       this.msgUdpated.set("changed/dirty"); 

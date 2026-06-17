@@ -9,8 +9,8 @@
         <sort-object-table
           [tabObjectsRef]="genericCrudContext()!.tabObjects"
           [essentialKeysArrayRef]="classHelper().essentialFieldNames"
-          [(selectedObjectRef)]="selectedObject"
-          (selectedObjectRefChange)="onSelectObject(selectedObject)"
+          [(selectedObjectRef)]="sSelectedObject"
+          (selectedObjectRefChange)="onSelectObject(sSelectedObject())"
           [(messageRef)]="collectionMessage"
           [objectHelperRef]="objectHelper()"
           >
@@ -23,7 +23,7 @@
         [(modeRef)]="mode"
         [(messageRef)]="formMessage"
         [objectHelperRef]="objectHelper()"
-        [(objectTempRef)]="objectTemp"
+        [(objectTempRef)]="sObjectTemp"
         (actionEvent)="onActionEvent($event)"
         [optionalSpecificSubFormTemplateRef] = "optionalSpecificSubFormTemplateRef()"
         [availableActions]="genericCrudContext()!.availableActions"

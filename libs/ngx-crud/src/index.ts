@@ -13,4 +13,5 @@ export * from './lib/crud/abstract/AbstractGenSubFormData';
 export * from './lib/crud/generic-crud/generic-crud.component';
 export * from './lib/crud/gen-crud-param/gen-crud-param.component';
 export * from './lib/crud/gen-crud-form/gen-crud-form.component';
-export * from './lib/crud/automatic-gen-sub-form/automatic-gen-sub-form.component';
+export * from './lib/crud/auto-gen-signal-form/auto-gen-signal-form.component';
+export * from './lib/crud/auto-gen-td-form/auto-gen-td-form.component';

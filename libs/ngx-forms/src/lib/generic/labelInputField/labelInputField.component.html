@@ -5,6 +5,6 @@
                  (focus)="onFocus()"  (blur)="onBlur()" (mouseenter)="onMouseEnter()"  (mouseleave)="onMouseLeave()"/>
           <span [style.display]="displayErr()?'block':'none'" class="p-1 text-red-600">{{fieldErrorMessageSignal()}}</span> 
     }@else{
-        <input  [type]="inputType()"  [(ngModel)]="fieldData" [name]="name()" [ngClass]="inputClass()" />
+        <input  [type]="inputType()"  [(ngModel)]="fieldData" [name]="name()" [ngClass]="inputClass()"/>
     }
 </div>

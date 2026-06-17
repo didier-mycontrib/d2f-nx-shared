@@ -1,13 +1,2 @@
-<form  class="grid grid-cols-1 xl:grid-cols-2 gap-x-3 gap-y-1">
-@for( key of objectKeysArray(objectTempRef()); track key){
-       @if(isNoEditableId(key)){
-        <ngx-read-only-field [(fieldData)]="objectTempRef()[key]" [name]="key" fieldLayout="row" ></ngx-read-only-field>
-       }@else {
-        <ngx-label-input-field [(fieldData)]="objectTempRef()[key]" [name]="key" fieldLayout="row" ></ngx-label-input-field>
-       }
-    }
-</form>
-<hr/>
-
 <ngx-dynamic-form   [formRef]="formRef()" fieldLayout="row"
                     [mapFieldInfo]="mapFieldInfo()"></ngx-dynamic-form>

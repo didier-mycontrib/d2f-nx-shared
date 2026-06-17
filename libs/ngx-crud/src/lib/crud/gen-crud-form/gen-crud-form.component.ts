@@ -1,10 +1,10 @@
-import { Component, effect, input, InputSignal, model, ModelSignal, output, SimpleChanges, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, Component, effect, inject, input, InputSignal, model, ModelSignal, output, signal, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
 import { TogglePanelComponent } from 'd2f-ngx-components';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MyMessageComponent } from "d2f-ngx-components";
 import { MyImportMaterialModule } from '../../common/imports/my-import-material.module';
-import { AutomaticGenSubFormComponent } from '../automatic-gen-sub-form/automatic-gen-sub-form.component';
+import { AutoGenTdFormComponent } from '../auto-gen-td-form/auto-gen-td-form.component';
 import { AbstractGenSubFormData } from '../abstract/AbstractGenSubFormData';
 import { cloneObject } from 'd2f-ngx-util';
 import { ObjectHelper , FieldHelper } from 'd2f-ngx-util';
@@ -19,13 +19,24 @@ Sous composant servant à :
 
 @Component({
   selector: 'gen-crud-form',
-  imports: [CommonModule, FormsModule, AutomaticGenSubFormComponent,AutoGenSignalFormComponent,
+  imports: [CommonModule, FormsModule, AutoGenTdFormComponent,AutoGenSignalFormComponent,
            TogglePanelComponent, MyMessageComponent,
           MyImportMaterialModule ],
   templateUrl: './gen-crud-form.component.html',
   styleUrl: './gen-crud-form.component.css'
 })
 export class GenCrudFormComponent {
+
+  changedDetectorRef = inject(ChangeDetectorRef);
+
+  /*
+  //RESTRICTION , l'état "valid" ou "invalid" remonte mal  en mode template driven
+  // si trop de niveau d'imbrication de sous composants:
+  // <form #tdFormObject="ngForm">  in .html
+  @ViewChild('tdFormObject', { read: NgForm }) tdFormObject!: NgForm;
+
+  //en théorie this.tdFormObject.form.valid true or false , en pratique quasiment toujours true
+  */
 
    public messageRef = model<string>("");
 
@@ -45,18 +56,21 @@ export class GenCrudFormComponent {
 
     formRef = input<any>(); //optional (may be undefined)
     mapFieldInfo=input<FieldInfoMap>({});//optional (may be empty)
-    /*
-  sForm! : any;//optional signalForm to build with sFormSchema and objectTemp
-  sTempEntity = signal<any>(undefined);
-    formRef = input<any>(); //optional (may be undefined)
-  */
-/*
-     refreshSForm(){
-    if(this.objectTemp){
-      this.sTempEntity.set(this.objectTemp);
-      this.sForm=form(this.sTempEntity,this.sFormSchema);
+
+
+    checkValid(){
+      let valid =true;
+       if(this.formRef()){
+           valid = this.formRef()().valid();
+       }
+       return valid;
     }
-  }*/
+
+    checkChanged(){
+        let changed = this.hasBeenChanged();
+        console.log("changed="+changed);
+        return changed;
+    }
 
     subFormData : AbstractGenSubFormData = 
      { obj: this.objectTempRef(),
@@ -76,7 +90,15 @@ export class GenCrudFormComponent {
       this.subFormData.mode = this.modeRef();
     }
 
-    hasBeenChanged():boolean{
+    changedWithSignalForm = false;
+
+     hasBeenChanged():boolean{
+        if(this.changedWithSignalForm) return true;
+        /*else*/
+        return this.basicHasBeenChanged();
+     }
+
+     basicHasBeenChanged():boolean{
       let changed=false;
       let arrayOfPropKeys = Reflect.ownKeys(this.objectTempRef());
          for(let key of arrayOfPropKeys){
@@ -87,6 +109,21 @@ export class GenCrudFormComponent {
          }
       return changed;
    }
+
+       dirtyEffect = effect(()=>{
+            if(this.formRef()){
+               if(this.formRef()().dirty()) {
+                 console.log("dirty++")
+                this.changedWithSignalForm=true;
+               } else{
+                 console.log("nodirty--")
+                this.changedWithSignalForm=false;
+               }
+                  
+                 //this.objectTempRef.set(cloneObject(this.formRef()().controlValue())) ;
+                 //this.formRef()().reset();
+               }
+          });
 
    private modeEffect = effect(()=>{
       if(this.modeRef() == 'newOne'){
@@ -103,6 +140,7 @@ export class GenCrudFormComponent {
 
     onAction(actionType:string){
          this.actionEvent.emit(actionType);
+         //ExpressionChangedAfterItHasBeenCheckedError not important here
     }
    
    
