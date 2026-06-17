@@ -5,12 +5,12 @@ import { D2fNgxMatTogglePanelComponent} from 'd2f-ngx-components';
 //import { TogglePanelComponent} from 'd2f-ngx-components';
 
 @Component({
-  selector: 'mylayout-legal-footer',
+  selector: 'd2flayout-legal-footer',
   imports: [CommonModule , D2fNgxMatTogglePanelComponent ],
   templateUrl: './legal-footer.component.html',
   styleUrls: ['./legal-footer.component.css']
 })
-export class LegalFooterComponent  {
+export class D2fNgxLegalFooterComponent  {
 
   footerPanelExpand = model(false);
 

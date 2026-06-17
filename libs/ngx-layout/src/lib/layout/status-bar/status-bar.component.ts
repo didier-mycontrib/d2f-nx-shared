@@ -3,11 +3,11 @@ import { UserSessionService , UserSessionEx } from 'd2f-ngx-session';
 
 
 @Component({
-  selector: 'mylayout-status-bar',
+  selector: 'd2flayout-status-bar',
   templateUrl: './status-bar.component.html',
   styleUrls: ['./status-bar.component.css']
 })
-export class StatusBarComponent  {
+export class D2fNgxStatusBarComponent  {
 
   private _userSessionService = inject(UserSessionService);
 

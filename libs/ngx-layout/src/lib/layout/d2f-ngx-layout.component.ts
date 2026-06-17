@@ -1,10 +1,10 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component,  input, InputSignal, model, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
-import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
-import { MainSideNavComponent } from './main-side-nav/main-side-nav.component';
-import { MainContentComponent } from './main-content/main-content.component';
-import { StickyFooterComponent } from './sticky-footer/sticky-footer.component';
+import { D2fNgxStickyHeaderComponent } from './sticky-header/sticky-header.component';
+import { D2fNgxMainSideNavComponent } from './main-side-nav/main-side-nav.component';
+import { D2fNgxMainContentComponent } from './main-content/main-content.component';
+import { D2fNgxStickyFooterComponent } from './sticky-footer/sticky-footer.component';
 import { CommonModule } from '@angular/common';
 import { MenuDef } from '../common/data/menu-def';
 import { MyImportMaterialModule } from '../common/imports/my-import-material.module';
@@ -13,8 +13,8 @@ import { MyImportMaterialModule } from '../common/imports/my-import-material.mod
 
 @Component({
   selector: 'd2f-ngx-layout',
-  imports: [StickyHeaderComponent, MainSideNavComponent, CommonModule,
-    StickyFooterComponent ,  MainContentComponent ,MyImportMaterialModule ] ,
+  imports: [D2fNgxStickyHeaderComponent, D2fNgxMainSideNavComponent, CommonModule,
+    D2fNgxStickyFooterComponent ,  D2fNgxMainContentComponent ,MyImportMaterialModule ] ,
   templateUrl: './d2f-ngx-layout.component.html',
   styleUrls: ['./d2f-ngx-layout.component.css']
 })

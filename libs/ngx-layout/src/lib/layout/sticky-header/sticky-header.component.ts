@@ -1,19 +1,19 @@
 import { Component,  input, InputSignal, output,  } from '@angular/core';
-import { QuickToolbarComponent } from '../quick-toolbar/quick-toolbar.component';
-import { QuickMenuComponent } from '../quick-menu/quick-menu.component';
-import { StatusBarComponent } from '../status-bar/status-bar.component';
+import { D2fNgxQuickToolbarComponent } from '../quick-toolbar/quick-toolbar.component';
+import { D2fNgxQuickMenuComponent } from '../quick-menu/quick-menu.component';
+import { D2fNgxStatusBarComponent } from '../status-bar/status-bar.component';
 import { inject, PLATFORM_ID } from "@angular/core";
 import { isPlatformBrowser} from "@angular/common";
 import { MyImportMaterialModule } from '../../common/imports/my-import-material.module';
 import { MenuDef } from '../../common/data/menu-def';
 
 @Component({
-  selector: 'mylayout-sticky-header',
-  imports: [ MyImportMaterialModule, QuickToolbarComponent,QuickMenuComponent,StatusBarComponent],
+  selector: 'd2flayout-sticky-header',
+  imports: [ MyImportMaterialModule, D2fNgxQuickToolbarComponent,D2fNgxQuickMenuComponent,D2fNgxStatusBarComponent],
   templateUrl: './sticky-header.component.html',
   styleUrls: ['./sticky-header.component.css']
 })
-export class StickyHeaderComponent  {
+export class D2fNgxStickyHeaderComponent  {
 
   private readonly platform = inject(PLATFORM_ID);
 

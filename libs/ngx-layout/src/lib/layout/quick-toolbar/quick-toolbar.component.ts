@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { MyImportMaterialModule } from '../../common/imports/my-import-material.module';
 
 @Component({
-  selector: 'mylayout-quick-toolbar',
+  selector: 'd2flayout-quick-toolbar',
   imports : [MyImportMaterialModule],
   templateUrl: './quick-toolbar.component.html',
   styleUrls: ['./quick-toolbar.component.css']
 })
-export class QuickToolbarComponent  {
+export class D2fNgxQuickToolbarComponent  {
 
   //loginLogout , home (welcome) , search , shopping (caddy_or_subscribe)  -->
   

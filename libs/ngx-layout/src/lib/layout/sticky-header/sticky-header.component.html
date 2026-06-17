@@ -7,16 +7,16 @@
                 <mat-icon class="customIconSize">view_headline</mat-icon>
               </span> 
             <span class="flexItem center-text-align highlight title">{{title()}}</span>  
-            <mylayout-quick-toolbar (statusHelp)="onStatusHelp()" class="withRightPadding"></mylayout-quick-toolbar> 
+            <d2flayout-quick-toolbar (statusHelp)="onStatusHelp()" class="withRightPadding"></d2flayout-quick-toolbar> 
         </div>
       </div>
       <div class="flexItem center-text-align ">
         <div class="flexRowNoWrap">
           @if(showStatusBar){
-              <mylayout-status-bar  class="flexItem" ></mylayout-status-bar>
+              <d2flayout-status-bar  class="flexItem" ></d2flayout-status-bar>
           }
-          <mylayout-quick-menu class="flexItem noDisplayForSmallWidth withRightMargin"
-          [quickMenuDefs]="quickMenuDefs()" ></mylayout-quick-menu>
+          <d2flayout-quick-menu class="flexItem noDisplayForSmallWidth withRightMargin"
+          [quickMenuDefs]="quickMenuDefs()" ></d2flayout-quick-menu>
         </div>
      </div>
     </div>

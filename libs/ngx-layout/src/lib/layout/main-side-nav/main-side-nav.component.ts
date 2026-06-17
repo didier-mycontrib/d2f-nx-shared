@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { MenuDef } from '../../common/data/menu-def';
 
 @Component({
-  selector: 'mylayout-main-side-nav',
+  selector: 'd2flayout-main-side-nav',
   templateUrl: './main-side-nav.component.html',
   styleUrls: ['./main-side-nav.component.css']
 })
-export class MainSideNavComponent  {
+export class D2fNgxMainSideNavComponent  {
   
   afterNav = output<{value:String}>();
 

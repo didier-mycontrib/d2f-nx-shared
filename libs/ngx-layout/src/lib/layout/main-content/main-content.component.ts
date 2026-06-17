@@ -3,12 +3,12 @@ import { RouterOutlet } from '@angular/router';
 
 
 @Component({
-  selector: 'mylayout-main-content',
+  selector: 'd2flayout-main-content',
   imports: [RouterOutlet],
   templateUrl: './main-content.component.html',
   styleUrls: ['./main-content.component.css']
 })
-export class MainContentComponent {
+export class D2fNgxMainContentComponent {
 
   constructor() { }
 

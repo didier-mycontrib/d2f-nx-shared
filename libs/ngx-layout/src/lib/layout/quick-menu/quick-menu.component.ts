@@ -5,11 +5,11 @@ import { MenuDef } from '../../common/data/menu-def';
 
 
 @Component({
-  selector: 'mylayout-quick-menu',
+  selector: 'd2flayout-quick-menu',
   templateUrl: './quick-menu.component.html',
   styleUrls: ['./quick-menu.component.css']
 })
-export class QuickMenuComponent  {
+export class D2fNgxQuickMenuComponent  {
 
   private _defaultQuickMenuDefs : MenuDef[] = [
     new MenuDef("home","/ngr-home"),
