@@ -1,12 +1,12 @@
-<gen-crud-param
+<d2fngx-gen-crud-param
 (reload)="onReload()"
 [(filterDefs)]="genericCrudContext()!.filterDefs" >
-</gen-crud-param>
+</d2fngx-gen-crud-param>
 
 <div class="flexRowWrap mb-1 mt-1">
     <div class="flexItem m-1" >
    
-        <sort-object-table
+        <d2fngx-sort-object-table
           [tabObjectsRef]="genericCrudContext()!.tabObjects"
           [essentialKeysArrayRef]="classHelper().essentialFieldNames"
           [(selectedObjectRef)]="sSelectedObject"
@@ -14,22 +14,37 @@
           [(messageRef)]="collectionMessage"
           [objectHelperRef]="objectHelper()"
           >
-       </sort-object-table>
+       </d2fngx-sort-object-table>
       
      </div> <!-- end of flexItem -->
 
      <div class="flexItem m-1" >
-       <gen-crud-form 
-        [(modeRef)]="mode"
-        [(messageRef)]="formMessage"
-        [objectHelperRef]="objectHelper()"
-        [(objectTempRef)]="sObjectTemp"
-        (actionEvent)="onActionEvent($event)"
-        [optionalSpecificSubFormTemplateRef] = "optionalSpecificSubFormTemplateRef()"
-        [availableActions]="genericCrudContext()!.availableActions"
-        [formRef]="formRef()" 
-        >
-       </gen-crud-form>
+      @if(formRef()){
+        <d2fngx-gen-crud-signal-form 
+          [(modeRef)]="mode"
+          [(messageRef)]="formMessage"
+          [objectHelperRef]="objectHelper()"
+          [(objectTempRef)]="sObjectTemp"
+          (actionEvent)="onActionEvent($event)"
+          [optionalSpecificSubFormTemplateRef] = "optionalSpecificSubFormTemplateRef()"
+          [specifSubFormAsAdditional] = "specifSubFormAsAdditional()"
+          [availableActions]="genericCrudContext()!.availableActions"
+          [formRef]="formRef()" 
+          >
+        </d2fngx-gen-crud-signal-form>
+      }@else{
+        <d2fngx-gen-crud-td-form 
+          [(modeRef)]="mode"
+          [(messageRef)]="formMessage"
+          [objectHelperRef]="objectHelper()"
+          [(objectTempRef)]="sObjectTemp"
+          (actionEvent)="onActionEvent($event)"
+          [optionalSpecificSubFormTemplateRef] = "optionalSpecificSubFormTemplateRef()"
+          [specifSubFormAsAdditional] = "specifSubFormAsAdditional()"
+          [availableActions]="genericCrudContext()!.availableActions"
+          >
+        </d2fngx-gen-crud-td-form>
+      }
      </div> <!-- end of flexItem -->
 
    </div><!-- end of main flexRowNoWrap -->

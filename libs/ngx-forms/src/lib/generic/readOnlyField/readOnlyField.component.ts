@@ -6,12 +6,12 @@ import { NgClass } from '@angular/common';
 import { computed_fieldErrorMessageSignal } from '../../common/util/mySignalFormUtil';
 
 @Component({
-  selector: 'ngx-read-only-field',
+  selector: 'd2fngx-read-only-field',
   imports: [FormsModule,FormField,NgClass],
   templateUrl: './readOnlyField.component.html',
   styleUrls: ['./readOnlyField.component.css' , '../../common/css/common.form.css'],
 })
-export class ReadOnlyFieldComponent extends AbstractFieldComponent{
+export class D2fNgxReadOnlyFieldComponent extends AbstractFieldComponent{
 
   readonlyValue = signal<any>('');
 

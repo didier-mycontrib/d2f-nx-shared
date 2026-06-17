@@ -48,7 +48,7 @@ export class MainSideNavComponent  {
         }else{
           this.subMenuPaddingTop=0;
         }
-        console.log(`delta=${delta} subMenuPaddingTop=${this.subMenuPaddingTop}`);
+       // console.log(`delta=${delta} subMenuPaddingTop=${this.subMenuPaddingTop}`);
   }
 
 

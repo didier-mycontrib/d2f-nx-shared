@@ -82,7 +82,7 @@ export class D2fNgxLayoutComponent implements OnInit {
     if (this.isSmall==true ) {
       this.openedSideNav.set(false);
     }else {
-      console.log("defaultOpenedSideNav="+this.defaultOpenedSideNav());
+      //console.log("defaultOpenedSideNav="+this.defaultOpenedSideNav());
       this.openedSideNav.set(this.defaultOpenedSideNav());
     } 
   }

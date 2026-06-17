@@ -1,42 +1,31 @@
 import { ChangeDetectorRef, Component, effect, inject, input, InputSignal, model, ModelSignal, output, signal, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
-import { TogglePanelComponent } from 'd2f-ngx-components';
+import { D2fNgxTogglePanelComponent } from 'd2f-ngx-components';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
-import { MyMessageComponent } from "d2f-ngx-components";
+import { D2fNgxMessageComponent } from "d2f-ngx-components";
 import { MyImportMaterialModule } from '../../common/imports/my-import-material.module';
-import { AutoGenTdFormComponent } from '../auto-gen-td-form/auto-gen-td-form.component';
-import { AbstractGenSubFormData } from '../abstract/AbstractGenSubFormData';
+import { AutoGenTdFormComponent } from './gen-crud-td-form/auto-gen-td-form/auto-gen-td-form.component';
 import { cloneObject } from 'd2f-ngx-util';
 import { ObjectHelper , FieldHelper } from 'd2f-ngx-util';
-import { AutoGenSignalFormComponent } from '../auto-gen-signal-form/auto-gen-signal-form.component';
 import { FieldInfoMap } from 'd2f-ngx-forms';
 /*
 Sous composant servant à :
   - éditer les partie d'un objet
   - déclencher des demandes d'actions ("new" , "add" , "update" , "delete")
   - afficher un message (notification, ...)
+  Deux variantes par héritages:
+     - GenCrudTdFormComponent (templateDriven)
+     - GenCrudSignalFormComponent
 */
 
 @Component({
-  selector: 'gen-crud-form',
-  imports: [CommonModule, FormsModule, AutoGenTdFormComponent,AutoGenSignalFormComponent,
-           TogglePanelComponent, MyMessageComponent,
-          MyImportMaterialModule ],
-  templateUrl: './gen-crud-form.component.html',
+  selector: 'd2fngx-crud-form',
+  imports: [ ],
+  template: '',
   styleUrl: './gen-crud-form.component.css'
 })
-export class GenCrudFormComponent {
+export abstract class D2fNgxGenCrudFormComponent {
 
-  changedDetectorRef = inject(ChangeDetectorRef);
-
-  /*
-  //RESTRICTION , l'état "valid" ou "invalid" remonte mal  en mode template driven
-  // si trop de niveau d'imbrication de sous composants:
-  // <form #tdFormObject="ngForm">  in .html
-  @ViewChild('tdFormObject', { read: NgForm }) tdFormObject!: NgForm;
-
-  //en théorie this.tdFormObject.form.valid true or false , en pratique quasiment toujours true
-  */
 
    public messageRef = model<string>("");
 
@@ -53,77 +42,14 @@ export class GenCrudFormComponent {
     objectTempRef = model<any>(null);
 
     optionalSpecificSubFormTemplateRef = input<TemplateRef<any>>();
-
-    formRef = input<any>(); //optional (may be undefined)
-    //optional FieldInfo now as optional extraInfo in objectHelper/fieldHelper
-
-
-    checkValid(){
-      let valid =true;
-       if(this.formRef()){
-           valid = this.formRef()().valid();
-       }
-       return valid;
-    }
-
-    checkChanged(){
-        let changed = this.hasBeenChanged();
-        console.log("changed="+changed);
-        return changed;
-    }
-
-    subFormData : AbstractGenSubFormData = 
-     { obj: this.objectTempRef(),
-      mode : this.modeRef()
-     } ;
+    specifSubFormAsAdditional=input(false);
+  
 
     baseTitle ="selected entity";
     title = this.baseTitle;
 
     tablePanelOpenState=true;
 
-    originalObjectTemp : any = null;
-
-    ngOnChanges(changes:SimpleChanges){
-      this.originalObjectTemp = cloneObject(this.objectTempRef()); //for detect change attempt
-      this.subFormData.obj=this.objectTempRef();
-      this.subFormData.mode = this.modeRef();
-    }
-
-    changedWithSignalForm = false;
-
-     hasBeenChanged():boolean{
-        if(this.changedWithSignalForm) return true;
-        /*else*/
-        return this.basicHasBeenChanged();
-     }
-
-     basicHasBeenChanged():boolean{
-      let changed=false;
-      let arrayOfPropKeys = Reflect.ownKeys(this.objectTempRef());
-         for(let key of arrayOfPropKeys){
-           let originalFieldValue=this.originalObjectTemp[key];
-           let fieldValue=this.objectTempRef()[key];
-           if(fieldValue!=undefined && fieldValue != originalFieldValue)
-             { changed=true; break; }
-         }
-      return changed;
-   }
-
-       dirtyEffect = effect(()=>{
-            if(this.formRef()){
-               if(this.formRef()().dirty()) {
-                 console.log("dirty++")
-                this.changedWithSignalForm=true;
-               } else{
-                 console.log("nodirty--")
-                this.changedWithSignalForm=false;
-               }
-                  
-                 //this.objectTempRef.set(cloneObject(this.formRef()().controlValue())) ;
-                 //this.formRef()().reset();
-               }
-          });
 
    private modeEffect = effect(()=>{
       if(this.modeRef() == 'newOne'){
@@ -140,9 +66,8 @@ export class GenCrudFormComponent {
 
     onAction(actionType:string){
          this.actionEvent.emit(actionType);
-         //ExpressionChangedAfterItHasBeenCheckedError not important here
+         //ExpressionChangedAfterItHasBeenCheckedError ???
     }
    
    
-  
 }

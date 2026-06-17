@@ -1,30 +1,30 @@
 <form novalidate class="p-1 grid grid-cols-1"  [ngClass]="dynFormCssClass()">
  @for( key of objectKeysArray(entityModel); track key){
   @if(mapFieldInfo()[key].notEditable){
-     <ngx-read-only-field [formRef]="formRef()" [fieldLayout]="fieldLayout()" 
-     [name]="key" [label]="mapFieldInfo()[key].label" ></ngx-read-only-field>
+     <d2fngx-read-only-field [formRef]="formRef()" [fieldLayout]="fieldLayout()" 
+     [name]="key" [label]="mapFieldInfo()[key].label" ></d2fngx-read-only-field>
  }@else{
    @switch(mapFieldInfo()[key].fieldType){
        @case("boolean"){
-            <ngx-boolean-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"  
-            [name]="key" [label]="mapFieldInfo()[key].label" ></ngx-boolean-field>
+            <d2fngx-boolean-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"  
+            [name]="key" [label]="mapFieldInfo()[key].label" ></d2fngx-boolean-field>
        }
        @case("array"){
-            <ngx-many-select-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
-             [name]="key" [label]="mapFieldInfo()[key].label" [items]="mapFieldInfo()[key].items??[]" ></ngx-many-select-field>
+            <d2fngx-many-select-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
+             [name]="key" [label]="mapFieldInfo()[key].label" [items]="mapFieldInfo()[key].items??[]" ></d2fngx-many-select-field>
        }
        @default{
             @if(mapFieldInfo()[key].pseudoEnum){
-                 <ngx-choice-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
-                  [name]="key" [pseudoEnum]="mapFieldInfo()[key].pseudoEnum"></ngx-choice-field>
+                 <d2fngx-choice-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
+                  [name]="key" [pseudoEnum]="mapFieldInfo()[key].pseudoEnum"></d2fngx-choice-field>
             }
             @if(mapFieldInfo()[key].items){
-                 <ngx-choice-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
-                  [name]="key" [items]="mapFieldInfo()[key].items??[]"></ngx-choice-field>
+                 <d2fngx-choice-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
+                  [name]="key" [items]="mapFieldInfo()[key].items??[]"></d2fngx-choice-field>
             }
             @if(!mapFieldInfo()[key].pseudoEnum! && !mapFieldInfo()[key].items){
-                 <ngx-label-input-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
-                  [name]="key"  [inputType]="mapFieldInfo()[key].fieldType??'text'"></ngx-label-input-field>
+                 <d2fngx-label-input-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
+                  [name]="key"  [inputType]="mapFieldInfo()[key].fieldType??'text'"></d2fngx-label-input-field>
             }
        }
    }

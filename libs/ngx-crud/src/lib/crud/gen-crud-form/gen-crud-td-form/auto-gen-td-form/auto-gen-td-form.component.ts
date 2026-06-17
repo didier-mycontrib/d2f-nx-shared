@@ -1,6 +1,6 @@
 import { Component, input, InputSignal, model, ModelSignal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { LabelInputFieldComponent, ReadOnlyFieldComponent } from 'd2f-ngx-forms';
+import { D2fNgxLabelInputFieldComponent, D2fNgxReadOnlyFieldComponent } from 'd2f-ngx-forms';
 import { ObjectHelper , FieldHelper } from 'd2f-ngx-util';
 
 /*
@@ -12,7 +12,7 @@ pas de remontée "valid" ou "invalid" car trop de niveaux d'imbrications
 @Component({
   selector: 'auto-gen-td-form',
   standalone : true,
-  imports: [FormsModule,LabelInputFieldComponent,ReadOnlyFieldComponent],
+  imports: [FormsModule,D2fNgxLabelInputFieldComponent,D2fNgxReadOnlyFieldComponent],
   templateUrl: './auto-gen-td-form.component.html',
   styleUrl: './auto-gen-td-form.component.css'
 })

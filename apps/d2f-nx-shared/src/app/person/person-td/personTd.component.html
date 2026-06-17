@@ -2,9 +2,9 @@
 
  <form #personTemplateDrivenForm="ngForm" class="p-1 grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-3">
    
-     <ngx-read-only-field [(fieldData)]="personData.ref" name="ref"  ></ngx-read-only-field>
-     <ngx-label-input-field [(fieldData)]="personData.firstname" name="firstname"  ></ngx-label-input-field>
-     <ngx-label-input-field [(fieldData)]="personData.lastname" name="lastname" label="last_name" ></ngx-label-input-field>
+     <d2fngx-read-only-field [(fieldData)]="personData.ref" name="ref"  ></d2fngx-read-only-field>
+     <d2fngx-label-input-field [(fieldData)]="personData.firstname" name="firstname"  ></d2fngx-label-input-field>
+     <d2fngx-label-input-field [(fieldData)]="personData.lastname" name="lastname" label="last_name" ></d2fngx-label-input-field>
     <!--
     <div>
         <label class="block text-sm">lastname:</label>
@@ -12,15 +12,15 @@
         <span class="text-red-600"></span>
     </div>
     -->
-    <ngx-label-input-field [(fieldData)]="personData.email" name="email"  ></ngx-label-input-field>
-    <ngx-label-input-field [(fieldData)]="personData.taille" name="taille" inputType="number" ></ngx-label-input-field>
-    <ngx-label-input-field [(fieldData)]="personData.birthday" name="birthday" inputType="date" ></ngx-label-input-field>
-     <ngx-boolean-field [(fieldData)]="personData.celibataire" name="celibataire" label="situation"></ngx-boolean-field>
-    <ngx-choice-field [(fieldData)]="personData.genre" name="genre"  [pseudoEnum]="Genre" ></ngx-choice-field>
-    <ngx-choice-field [(fieldData)]="personData.nationalite" name="nationalite"
-       [items]="['francais','europeen','autre']" ></ngx-choice-field>
-    <ngx-many-select-field  [(fieldData)]="personData.sports" name="sports"  
-      [items]="['velo' , 'football' , 'tennis' , 'basket' ]" ></ngx-many-select-field>
+    <d2fngx-label-input-field [(fieldData)]="personData.email" name="email"  ></d2fngx-label-input-field>
+    <d2fngx-label-input-field [(fieldData)]="personData.taille" name="taille" inputType="number" ></d2fngx-label-input-field>
+    <d2fngx-label-input-field [(fieldData)]="personData.birthday" name="birthday" inputType="date" ></d2fngx-label-input-field>
+     <d2fngx-boolean-field [(fieldData)]="personData.celibataire" name="celibataire" label="situation"></d2fngx-boolean-field>
+    <d2fngx-choice-field [(fieldData)]="personData.genre" name="genre"  [pseudoEnum]="Genre" ></d2fngx-choice-field>
+    <d2fngx-choice-field [(fieldData)]="personData.nationalite" name="nationalite"
+       [items]="['francais','europeen','autre']" ></d2fngx-choice-field>
+    <d2fngx-many-select-field  [(fieldData)]="personData.sports" name="sports"  
+      [items]="['velo' , 'football' , 'tennis' , 'basket' ]" ></d2fngx-many-select-field>
 </form>
  
     <input type="button" value="login" [disabled]="!personTemplateDrivenForm.form.valid" (click)="onPerson()" /> <br/>
@@ -31,9 +31,9 @@
 
     <form #personTemplateDrivenForm2="ngForm" class="p-1 grid grid-cols-1  xl:grid-cols-2 gap-x-3 sm:gap-y-3 md:gap-y-1">
    
-     <ngx-read-only-field fieldLayout='row' [(fieldData)]="personData.ref" name="ref"  ></ngx-read-only-field>
-     <ngx-label-input-field fieldLayout='row' [(fieldData)]="personData.firstname" name="firstname"  ></ngx-label-input-field>
-     <ngx-label-input-field fieldLayout='row' [(fieldData)]="personData.lastname" name="lastname" label="last_name" ></ngx-label-input-field>
+     <d2fngx-read-only-field fieldLayout='row' [(fieldData)]="personData.ref" name="ref"  ></d2fngx-read-only-field>
+     <d2fngx-label-input-field fieldLayout='row' [(fieldData)]="personData.firstname" name="firstname"  ></d2fngx-label-input-field>
+     <d2fngx-label-input-field fieldLayout='row' [(fieldData)]="personData.lastname" name="lastname" label="last_name" ></d2fngx-label-input-field>
     <!--
     <div>
         <label class="block text-sm">lastname:</label>
@@ -41,15 +41,15 @@
         <span class="text-red-600"></span>
     </div>
     -->
-    <ngx-label-input-field fieldLayout='row' [(fieldData)]="personData.email" name="email"  ></ngx-label-input-field>
-    <ngx-label-input-field fieldLayout='row' [(fieldData)]="personData.taille" name="taille" inputType="number" ></ngx-label-input-field>
-    <ngx-label-input-field fieldLayout='row' [(fieldData)]="personData.birthday" name="birthday" inputType="date" ></ngx-label-input-field>
-     <ngx-boolean-field fieldLayout='row' [(fieldData)]="personData.celibataire" name="celibataire" label="situation"></ngx-boolean-field>
-    <ngx-choice-field fieldLayout='row' [(fieldData)]="personData.genre" name="genre"  [pseudoEnum]="Genre" ></ngx-choice-field>
-    <ngx-choice-field fieldLayout='row' [(fieldData)]="personData.nationalite" name="nationalite"
-       [items]="['francais','europeen','autre']" ></ngx-choice-field>
-    <ngx-many-select-field  fieldLayout='row' [(fieldData)]="personData.sports" name="sports"  
-      [items]="['velo' , 'football' , 'tennis' , 'basket' ]" ></ngx-many-select-field>
+    <d2fngx-label-input-field fieldLayout='row' [(fieldData)]="personData.email" name="email"  ></d2fngx-label-input-field>
+    <d2fngx-label-input-field fieldLayout='row' [(fieldData)]="personData.taille" name="taille" inputType="number" ></d2fngx-label-input-field>
+    <d2fngx-label-input-field fieldLayout='row' [(fieldData)]="personData.birthday" name="birthday" inputType="date" ></d2fngx-label-input-field>
+     <d2fngx-boolean-field fieldLayout='row' [(fieldData)]="personData.celibataire" name="celibataire" label="situation"></d2fngx-boolean-field>
+    <d2fngx-choice-field fieldLayout='row' [(fieldData)]="personData.genre" name="genre"  [pseudoEnum]="Genre" ></d2fngx-choice-field>
+    <d2fngx-choice-field fieldLayout='row' [(fieldData)]="personData.nationalite" name="nationalite"
+       [items]="['francais','europeen','autre']" ></d2fngx-choice-field>
+    <d2fngx-many-select-field  fieldLayout='row' [(fieldData)]="personData.sports" name="sports"  
+      [items]="['velo' , 'football' , 'tennis' , 'basket' ]" ></d2fngx-many-select-field>
 </form>
  
     <input type="button" value="login" [disabled]="!personTemplateDrivenForm2.form.valid" (click)="onPerson()" /> <br/>

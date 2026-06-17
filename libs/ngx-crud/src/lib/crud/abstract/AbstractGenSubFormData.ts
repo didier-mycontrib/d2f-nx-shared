@@ -5,7 +5,12 @@ des données du sous formulaire de saisie (spécifique)
 .obj = objet temporaire à saisir
 */
 
-export interface AbstractGenSubFormData {
+export interface AbstractGenSubTdFormData {
     obj : object;
+    mode : string;
+}
+
+export interface AbstractGenSubSignalFormData {
+    form : any;
     mode : string;
 }

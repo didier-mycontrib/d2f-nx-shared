@@ -1,9 +1,9 @@
 import { Component, input, model, signal } from "@angular/core";
 import { ObjectHelper , FieldHelper } from 'd2f-ngx-util';
-import { TogglePanelComponent } from "../toggle-panel/toggle-panel.component";
+import { D2fNgxTogglePanelComponent } from "../toggle-panel/toggle-panel.component";
 import { NgStyle } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { MyMessageComponent } from "../my-message/my-message.component";
+import { D2fNgxMessageComponent } from "../my-message/my-message.component";
 
 
 /*
@@ -14,12 +14,12 @@ composant servant à :
 
 
 @Component({
-  selector: 'sort-object-table',
-  imports: [NgStyle,FormsModule,TogglePanelComponent,MyMessageComponent],
+  selector: 'd2fngx-sort-object-table',
+  imports: [NgStyle,FormsModule,D2fNgxTogglePanelComponent,D2fNgxMessageComponent],
   templateUrl: './sort-object-table.component.html',
   styleUrl: './sort-object-table.component.css'
 })
-export class SortObjectTableComponent {
+export class D2fNgxSortObjectTableComponent {
 
   title="";
   titleWithSize="";
@@ -117,7 +117,7 @@ export class SortObjectTableComponent {
    }
 
    public onSelectObject(obj:any){
-    console.log("select object:" + JSON.stringify(obj));
+    //console.log("select object:" + JSON.stringify(obj));
     this.selectedObjectRef.set(obj);
     let id = this.objectHelperRef()?.getId(obj);
     this.messageRef.set(id+ " selected");

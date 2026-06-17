@@ -2,7 +2,7 @@ import { Component, inject, signal, TemplateRef, ViewChild } from '@angular/core
 import { MatDialog } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { WithSimplePopupComponent } from './with-simple-popup/with-simple-popup.component';
-import { ConfirmDialogComponent, InputDialogComponent, TemplateDialogComponent } from 'd2f-ngx-components';
+import { D2fNgxConfirmDialogComponent, D2fNgxInputDialogComponent, D2fNgxTemplateDialogComponent } from 'd2f-ngx-components';
 import { HighlightBackgroundOverDirective, HighlightBorderOverDirective } from 'd2f-ngx-util';
 
 
@@ -29,7 +29,7 @@ export class HomeComponent {
   basicAgeDialogContext = { age : this.age()};
 
   onDialogAge(){
-          InputDialogComponent.inputDialog$(this.dialog,"age")
+          D2fNgxInputDialogComponent.inputDialog$(this.dialog,"age")
           .subscribe( (result : string ) => {
             if(result!="")
                this.age.set(Number(result));
@@ -37,7 +37,7 @@ export class HomeComponent {
   }
 
   onDialogChooseColor(){
-    InputDialogComponent.inputChoiceDialog$(this.dialog,"color",["black","red","green","blue","orange"],this.ageColor())
+    D2fNgxInputDialogComponent.inputChoiceDialog$(this.dialog,"color",["black","red","green","blue","orange"],this.ageColor())
     .subscribe( (result : string ) => {
       console.log("onDialogChooseColor result = "+result)
       this.ageColor.set(result);
@@ -45,7 +45,7 @@ export class HomeComponent {
   }
 
   onDialogConfirmReset(){
-    ConfirmDialogComponent.confirmDialog$(this.dialog,"reset age to 0 ?")
+    D2fNgxConfirmDialogComponent.confirmDialog$(this.dialog,"reset age to 0 ?")
     .subscribe( (isOk : boolean ) => {
       if(isOk) this.age.set(0);
     });
@@ -54,7 +54,7 @@ export class HomeComponent {
 
   onDialogChooseBackColor(){
     
-    TemplateDialogComponent.templateDialog$(this.dialog, this.backColorChooseTemplate, "background color choice" )
+    D2fNgxTemplateDialogComponent.templateDialog$(this.dialog, this.backColorChooseTemplate, "background color choice" )
     .subscribe( (isOk : boolean) => {
       if(isOk) 
         this.divBackgroundColor.set(this.bgColorDialogContext.bgColor);
@@ -80,7 +80,7 @@ export class HomeComponent {
         );
     */
 
-        TemplateDialogComponent.templateDialog$(this.dialog,this.basicAgeInputTemplate,"How old are you ?")
+        D2fNgxTemplateDialogComponent.templateDialog$(this.dialog,this.basicAgeInputTemplate,"How old are you ?")
         .subscribe(
           (isOk : boolean) => {
               if(isOk) this.age.set(Number(this.basicAgeDialogContext.age));

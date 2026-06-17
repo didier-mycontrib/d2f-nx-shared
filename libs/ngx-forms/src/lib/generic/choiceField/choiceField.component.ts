@@ -5,12 +5,12 @@ import { FormField } from '@angular/forms/signals';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'ngx-choice-field',
+  selector: 'd2fngx-choice-field',
   imports: [FormsModule,FormField,NgClass],
   templateUrl: './choiceField.component.html',
   styleUrl: './choiceField.component.css',
 })
-export class ChoiceFieldComponent extends AbstractFieldComponent {
+export class D2fNgxChoiceFieldComponent extends AbstractFieldComponent {
 
   pseudoEnum = input<any>(null); //as constObjectWithIterableKeys
   items=input<any[]>([]); //items (possible values for making a choice)

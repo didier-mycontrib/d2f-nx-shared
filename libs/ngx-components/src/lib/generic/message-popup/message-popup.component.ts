@@ -11,16 +11,16 @@ export interface MessagePopupInput{
 
 
 @Component({
-  selector: 'app-message-popup',
+  selector: 'd2fngx-message-popup',
   imports: [MyImportMaterialModule],
   templateUrl: './message-popup.component.html',
   styleUrl: './message-popup.component.css'
 })
-export class MessagePopupComponent {
+export class D2fNgxMessagePopupComponent {
 
   public data = inject<MessagePopupInput>(MAT_DIALOG_DATA);
   
-  readonly dialogRef = inject(MatDialogRef<MessagePopupComponent>);
+  readonly dialogRef = inject(MatDialogRef<D2fNgxMessagePopupComponent>);
 
   colorFromType(){
     switch(this.data.type){
@@ -43,7 +43,7 @@ export class MessagePopupComponent {
     //NB: texte = pure texte or simple html texte , type ="info" or "warning" or "error"
     static messagePopup(dialog : MatDialog,titre:string,texte:string,type:string="info"){
           //NB: { disableClose : false } for simple popup (no modal)
-          return dialog.open(MessagePopupComponent,
+          return dialog.open(D2fNgxMessagePopupComponent,
             { disableClose : false ,
               data: { titre : titre , texte : texte , type: type}
             })

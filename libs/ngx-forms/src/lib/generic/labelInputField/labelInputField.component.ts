@@ -6,12 +6,12 @@ import { NgClass } from '@angular/common';
 import { computed_fieldErrorMessageSignal, isFieldValid } from '../../common/util/mySignalFormUtil';
 
 @Component({
-  selector: 'ngx-label-input-field',
+  selector: 'd2fngx-label-input-field',
   imports: [FormsModule,FormField,NgClass],
   templateUrl: './labelInputField.component.html',
   styleUrls: ['./labelInputField.component.css' , '../../common/css/common.form.css'],
 })
-export class LabelInputFieldComponent extends AbstractFieldComponent{
+export class D2fNgxLabelInputFieldComponent extends AbstractFieldComponent{
 
   inputType=input("text");
   fieldErrorMessageSignal! :Signal<string> ;

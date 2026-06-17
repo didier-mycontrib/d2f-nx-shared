@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MyImportMaterialModule } from '../../common/imports/my-import-material.module';
 import { FilterDef } from '../../common/data/filter-def';
-import { TemplateDialogComponent } from 'd2f-ngx-components';
+import { D2fNgxTemplateDialogComponent } from 'd2f-ngx-components';
 import { cloneArrayOfSelfClonable, cloneObject } from 'd2f-ngx-util';
 import { JsonPipe } from '@angular/common';
 
@@ -12,12 +12,12 @@ export interface ResultContext {
 }
 
 @Component({
-  selector: 'gen-crud-param',
+  selector: 'd2fngx-gen-crud-param',
   imports: [MyImportMaterialModule,FormsModule,JsonPipe],
   templateUrl: './gen-crud-param.component.html',
   styleUrl: './gen-crud-param.component.css'
 })
-export class GenCrudParamComponent {
+export class D2fNgxGenCrudParamComponent {
 
   public filterDefs :ModelSignal<any> = model([]);
   public filterDefsSumUp="";
@@ -51,7 +51,7 @@ export class GenCrudParamComponent {
 
   onDialogFiltersSettings(){
      this.resultContext = { tempFilterDefs : cloneArrayOfSelfClonable(this.filterDefs())};
-      TemplateDialogComponent.templateDialog$(this.dialog, this.filtersDialogTemplate, "filter(s) settings" )
+      D2fNgxTemplateDialogComponent.templateDialog$(this.dialog, this.filtersDialogTemplate, "filter(s) settings" )
       .subscribe( (isOk : boolean) => {
         if(isOk) {
           console.log("onDialogFiltersSettings/isOk: tempFilterDefs ="+JSON.stringify(this.resultContext.tempFilterDefs));

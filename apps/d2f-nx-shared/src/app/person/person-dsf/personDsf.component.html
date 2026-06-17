@@ -1,7 +1,7 @@
 <h3> Dynamic signalForm </h3>
 
-<ngx-dynamic-form   [formRef]="personForm" 
-                    [mapFieldInfo]="personFieldInfoMap"></ngx-dynamic-form>
+<d2fngx-dynamic-form   [formRef]="personForm" 
+                    [mapFieldInfo]="personFieldInfoMap"></d2fngx-dynamic-form>
  <hr/>  
     <!-- person : <span [style.color]="okPerson?'green':'red'">{{ personModel() | json }}</span> <br/> -->
     <input type="button" value="login" [disabled]="personForm().invalid()" (click)="onPerson()" /> <br/>
@@ -12,5 +12,5 @@
  , updated : {{msgUdpated()}}  <button (click)="onRefreshNoDirty()">refresh no dirty</button>
  <hr/>
   <h3>variante avec fieldLayout='row'</h3> 
-  <ngx-dynamic-form  fieldLayout='row' [formRef]="personForm" 
-                    [mapFieldInfo]="personFieldInfoMap"></ngx-dynamic-form>
+  <d2fngx-dynamic-form  fieldLayout='row' [formRef]="personForm" 
+                    [mapFieldInfo]="personFieldInfoMap"></d2fngx-dynamic-form>

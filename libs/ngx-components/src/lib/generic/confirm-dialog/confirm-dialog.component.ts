@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { InputDialogComponent } from '../input-dialog/input-dialog.component';
+import { D2fNgxInputDialogComponent } from '../input-dialog/input-dialog.component';
 import { MyImportMaterialModule } from '../../common/imports/my-import-material.module';
 
 
@@ -9,17 +9,17 @@ export interface ConfirmDialogInput{
 }
 
 @Component({
-  selector: 'app-confirm-dialog',
+  selector: 'd2fngx-confirm-dialog',
   imports: [MyImportMaterialModule],
   templateUrl: './confirm-dialog.component.html',
   styleUrl: './confirm-dialog.component.css'
 })
-export class ConfirmDialogComponent {
+export class D2fNgxConfirmDialogComponent {
 
    
    public data = inject<ConfirmDialogInput>(MAT_DIALOG_DATA);
   
-    readonly dialogRef = inject(MatDialogRef<InputDialogComponent>);
+    readonly dialogRef = inject(MatDialogRef<D2fNgxInputDialogComponent>);
     
     onCancel(): void {
           this.dialogRef.close(false);
@@ -32,7 +32,7 @@ export class ConfirmDialogComponent {
     //helper function for simply call:
     static confirmDialog$(dialog : MatDialog,question:string){
           //NB: { disableClose : true } for modal dialog box
-          return dialog.open(ConfirmDialogComponent,
+          return dialog.open(D2fNgxConfirmDialogComponent,
             { disableClose : true ,
               data: { question : question}
             }).afterClosed();
@@ -65,7 +65,7 @@ onDialogConfirmReset(){
 readonly dialog = inject(MatDialog); 
 
 onDialogConfirmReset(){
-    ConfirmDialogComponent.confirmDialog$(this.dialog,"reset age to 0 ?")
+    D2fNgxConfirmDialogComponent.confirmDialog$(this.dialog,"reset age to 0 ?")
     .subscribe( (isOk : boolean ) => {
       if(isOk) this.age=0;
     });

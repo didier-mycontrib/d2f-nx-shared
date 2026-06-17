@@ -10,12 +10,12 @@ export interface TemplateDialogInput{
 }
 
 @Component({
-  selector: 'app-template-dialog',
+  selector: 'd2fngx-template-dialog',
   imports: [MyImportMaterialModule,FormsModule,CommonModule],
   templateUrl: './template-dialog.component.html',
   styleUrl: './template-dialog.component.css'
 })
-export class TemplateDialogComponent {
+export class D2fNgxTemplateDialogComponent {
 
     public data = inject<TemplateDialogInput>(MAT_DIALOG_DATA);
     value : any = "";
@@ -25,7 +25,7 @@ export class TemplateDialogComponent {
           this.data.title="modal dialog (settings)";
       }
     
-      readonly dialogRef = inject(MatDialogRef<TemplateDialogComponent>);
+      readonly dialogRef = inject(MatDialogRef<D2fNgxTemplateDialogComponent>);
       
       onCancel(): void {
             this.dialogRef.close(false);
@@ -40,7 +40,7 @@ export class TemplateDialogComponent {
       //helper function for simply call:
       static templateDialog$(dialog : MatDialog,template: TemplateRef<any> , title : string|null = null){
                       //NB: { disableClose : true } for modal dialog box
-            return dialog.open(TemplateDialogComponent,
+            return dialog.open(D2fNgxTemplateDialogComponent,
                     { disableClose : true ,
                       data:  { title : title , template : template}
                   }).afterClosed();

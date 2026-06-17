@@ -2,12 +2,12 @@ import { NgStyle } from '@angular/common';
 import { Component, computed, input, model } from '@angular/core';
 
 @Component({
-  selector: 'my-message',
+  selector: 'd2fngx-message',
   imports: [NgStyle],
   templateUrl: './my-message.component.html',
   styleUrl: './my-message.component.css'
 })
-export class MyMessageComponent {
+export class D2fNgxMessageComponent {
    public defaultMessageColor = input("green"); //or ...
    public notificationTimeout = input(2500); //i 0 : no timeout else : automatic reset avec timeout in ms
    private _timeoutId : any = null;
@@ -15,7 +15,7 @@ export class MyMessageComponent {
    public sIsErr = computed( () =>  this.message().startsWith("err"));
 
    ngOnChanges(){
-   console.log("MyMessageComponent.ngOnChanges : message="+this.message());
+   //console.log("MyMessageComponent.ngOnChanges : message="+this.message());
    if( this.notificationTimeout()>0){
      if(this._timeoutId){
           clearTimeout(this._timeoutId);

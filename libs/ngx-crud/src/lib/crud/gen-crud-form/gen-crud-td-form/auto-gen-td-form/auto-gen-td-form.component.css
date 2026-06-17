@@ -1,5 +1,5 @@
-@import  "../../common/css/d2f-common-layout.css"; 
-@import  "../../common/css/d2f-common-form.css"; 
+@import  "../../../../common/css/d2f-common-layout.css"; 
+@import  "../../../../common/css/d2f-common-form.css"; 
 
 label.f-align {
     width: 8em;

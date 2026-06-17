@@ -4,7 +4,7 @@ import { FieldLayout } from "../common/data/fieldInfo";
 import { NgClass } from "@angular/common";
 
 @Component({
-  selector: 'ngx-abstract-field',
+  selector: 'd2fngx-abstract-field',
   imports: [],
   template : ``
 })

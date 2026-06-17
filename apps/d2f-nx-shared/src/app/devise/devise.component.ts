@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Devise } from '../common/data/devise';
 import { DeviseHelper } from '../common/helper/devise-helper';
 //import { DeviseMemService } from '../common/service/devise-mem.service';
-import { GenericCrudContext , GenericCrudComponent , FilterDef} from 'd2f-ngx-crud';
+import { GenericCrudContext , D2fNgxGenericCrudComponent , FilterDef} from 'd2f-ngx-crud';
 import { DeviseService } from '../common/service/devise-rest.service';
 import { JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { DeviseMemService } from '../common/service/devise-mem.service';
 
 @Component({
   selector: 'app-devise',
-  imports: [GenericCrudComponent,JsonPipe,FormsModule],
+  imports: [D2fNgxGenericCrudComponent,JsonPipe,FormsModule],
   templateUrl: './devise.component.html',
   styleUrl: './devise.component.css'
 })

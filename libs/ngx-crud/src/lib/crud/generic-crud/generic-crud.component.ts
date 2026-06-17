@@ -4,14 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { GenericCrudService, GenericWithUploadService } from '../../common/service/generic-crud-service';
 import { cloneObject, copyObjectProperties, messageFromError } from 'd2f-ngx-util';
-import { SortObjectTableComponent } from 'd2f-ngx-components';
-import { GenCrudFormComponent } from '../gen-crud-form/gen-crud-form.component';
-import { GenCrudParamComponent } from '../gen-crud-param/gen-crud-param.component';
+import { D2fNgxSortObjectTableComponent } from 'd2f-ngx-components';
+import { D2fNgxGenCrudParamComponent } from '../gen-crud-param/gen-crud-param.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from 'd2f-ngx-components';
+import { D2fNgxConfirmDialogComponent } from 'd2f-ngx-components';
 import { Observable } from 'rxjs';
-import { FieldInfoMap } from 'd2f-ngx-forms';
-import { form } from '@angular/forms/signals';
+import { D2fNgxGenCrudTdFormComponent } from '../gen-crud-form/gen-crud-td-form/gen-crud-td-form.component';
+import { D2fNgxGenCrudSignalFormComponent } from '../gen-crud-form/gen-crud-signal-form/gen-crud-signal-form.component';
 
 export interface GenericCrudState{
   selectedObject : any, //selected existing entity or null
@@ -21,14 +20,14 @@ export interface GenericCrudState{
 }
 
 @Component({
-  selector: 'generic-crud',
+  selector: 'd2fngx-generic-crud',
   imports:[CommonModule,FormsModule,
-    SortObjectTableComponent,
-    GenCrudFormComponent,GenCrudParamComponent],
+    D2fNgxSortObjectTableComponent,D2fNgxGenCrudTdFormComponent,
+    D2fNgxGenCrudSignalFormComponent,D2fNgxGenCrudParamComponent],
   templateUrl: './generic-crud.component.html',
   styleUrls: ['./generic-crud.component.css']
 })
-export class GenericCrudComponent implements OnInit {
+export class D2fNgxGenericCrudComponent implements OnInit {
 
    private changeDetectorRef = inject(ChangeDetectorRef);
 
@@ -52,6 +51,7 @@ export class GenericCrudComponent implements OnInit {
   }
 
   public optionalSpecificSubFormTemplateRef = input<TemplateRef<any>>();
+  public specifSubFormAsAdditional=input(false);
 
   //this.genericCrudContext?.tabObjects of type T[]
 
@@ -93,7 +93,7 @@ export class GenericCrudComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("GenericCrudComponent.ngOnInit(): filterDefs="+JSON.stringify(this.genericCrudContext()?.filterDefs));
+    //console.log("GenericCrudComponent.ngOnInit(): filterDefs="+JSON.stringify(this.genericCrudContext()?.filterDefs));
     if(this.genericCrudContext()==null)return;
     this.genericCrudContext()!.onGetAllObjects$()
     .subscribe(
@@ -177,7 +177,7 @@ export class GenericCrudComponent implements OnInit {
   readonly dialog = inject(MatDialog); 
 
   onDeleteAfterConfirm(){
-   ConfirmDialogComponent.confirmDialog$(this.dialog,"confirm delete")
+   D2fNgxConfirmDialogComponent.confirmDialog$(this.dialog,"confirm delete")
       .subscribe( (isOk : boolean ) => {
         if(isOk) 
           this.onDelete();

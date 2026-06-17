@@ -2,12 +2,12 @@ import { NgClass } from '@angular/common';
 import { Component, computed, input, signal, Signal } from '@angular/core';
 import { FormField , ValidationError  } from '@angular/forms/signals';
 import { computed_mapFieldErrorMessageSignal, entityModelFromForm, isFieldValid } from '../../common/util/mySignalFormUtil';
-import { LabelInputFieldComponent } from '../labelInputField/labelInputField.component';
-import { BooleanFieldComponent } from '../booleanField/booleanField.component';
+import { D2fNgxLabelInputFieldComponent } from '../labelInputField/labelInputField.component';
+import { D2fNgxBooleanFieldComponent } from '../booleanField/booleanField.component';
 import { FieldInfo, FieldInfoMap, FieldLayout } from '../../common/data/fieldInfo';
-import { ChoiceFieldComponent } from '../choiceField/choiceField.component';
-import { ManySelectFieldComponent } from '../manySelectField/manySelectField.component';
-import { ReadOnlyFieldComponent } from '../readOnlyField/readOnlyField.component';
+import { D2fNgxChoiceFieldComponent } from '../choiceField/choiceField.component';
+import { D2fNgxManySelectFieldComponent } from '../manySelectField/manySelectField.component';
+import { D2fNgxReadOnlyFieldComponent } from '../readOnlyField/readOnlyField.component';
 
 /*
 En version signalForm
@@ -15,12 +15,12 @@ En version signalForm
 
 
 @Component({
-  selector: 'ngx-dynamic-form',
-  imports: [FormField,NgClass,LabelInputFieldComponent,BooleanFieldComponent,ChoiceFieldComponent,ManySelectFieldComponent,ReadOnlyFieldComponent],
+  selector: 'd2fngx-dynamic-form',
+  imports: [FormField,NgClass,D2fNgxLabelInputFieldComponent,D2fNgxBooleanFieldComponent,D2fNgxChoiceFieldComponent,D2fNgxManySelectFieldComponent,D2fNgxReadOnlyFieldComponent],
   templateUrl: './dynamicForm.component.html',
   styleUrls: ['./dynamicForm.component.css', '../../common/css/common.form.css'],
 })
-export class DynamicFormComponent {
+export class D2fNgxDynamicFormComponent {
   formRef = input<any>();
   mapFieldInfo=input<FieldInfoMap>({});
   fieldLayout = input<FieldLayout>('col'); //always in same col by defaut

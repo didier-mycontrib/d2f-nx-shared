@@ -1,9 +1,9 @@
 <h3> signalForm (person)</h3>
  <form novalidate class="p-1 grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-3">
 
-     <ngx-read-only-field [formRef]="personForm" name="ref"  ></ngx-read-only-field>
-    <ngx-label-input-field [formRef]="personForm" name="firstname"  ></ngx-label-input-field>
-    <ngx-label-input-field [formRef]="personForm" name="lastname"  ></ngx-label-input-field>
+     <d2fngx-read-only-field [formRef]="personForm" name="ref"  ></d2fngx-read-only-field>
+    <d2fngx-label-input-field [formRef]="personForm" name="firstname"  ></d2fngx-label-input-field>
+    <d2fngx-label-input-field [formRef]="personForm" name="lastname"  ></d2fngx-label-input-field>
     <!--
     <div>
         <label class="block text-sm">lastname:</label>
@@ -11,16 +11,16 @@
         <span class="text-red-600">{{mapFieldErrorMessageSignal().get('lastname')}}</span>
     </div>
    -->
-    <ngx-label-input-field [formRef]="personForm" name="email"  ></ngx-label-input-field>
-    <ngx-label-input-field [formRef]="personForm" name="taille" inputType="number" ></ngx-label-input-field>
-    <ngx-label-input-field [formRef]="personForm" name="birthday" inputType="date"  ></ngx-label-input-field>
-    <ngx-boolean-field [formRef]="personForm" name="celibataire" label="situation"></ngx-boolean-field>
-    <ngx-choice-field [formRef]="personForm" name="genre" [pseudoEnum]="Genre"></ngx-choice-field>
-    <ngx-choice-field [formRef]="personForm" 
+    <d2fngx-label-input-field [formRef]="personForm" name="email"  ></d2fngx-label-input-field>
+    <d2fngx-label-input-field [formRef]="personForm" name="taille" inputType="number" ></d2fngx-label-input-field>
+    <d2fngx-label-input-field [formRef]="personForm" name="birthday" inputType="date"  ></d2fngx-label-input-field>
+    <d2fngx-boolean-field [formRef]="personForm" name="celibataire" label="situation"></d2fngx-boolean-field>
+    <d2fngx-choice-field [formRef]="personForm" name="genre" [pseudoEnum]="Genre"></d2fngx-choice-field>
+    <d2fngx-choice-field [formRef]="personForm" 
                       name="nationalite" 
-                      [items]="['francais','europeen','autre']"></ngx-choice-field>
-    <ngx-many-select-field  [formRef]="personForm" name="sports"  
-      [items]="['velo' , 'football' , 'tennis' , 'basket' ]" ></ngx-many-select-field>                 
+                      [items]="['francais','europeen','autre']"></d2fngx-choice-field>
+    <d2fngx-many-select-field  [formRef]="personForm" name="sports"  
+      [items]="['velo' , 'football' , 'tennis' , 'basket' ]" ></d2fngx-many-select-field>                 
 </form>
     <!-- person : <span [style.color]="okPerson?'green':'red'">{{ personModel() | json }}</span> <br/> -->
     <input type="button" value="login" [disabled]="personForm().invalid()" (click)="onPerson()" /> <br/>
@@ -30,9 +30,9 @@
     <h3>variante avec fieldLayout='row'</h3>
     <form novalidate class="p-1 grid grid-cols-1 xl:grid-cols-2 gap-x-3 sm:gap-y-3 md:gap-y-1">
 
-     <ngx-read-only-field fieldLayout='row' [formRef]="personForm" name="ref"  ></ngx-read-only-field>
-    <ngx-label-input-field fieldLayout='row' [formRef]="personForm" name="firstname"  ></ngx-label-input-field>
-    <ngx-label-input-field fieldLayout='row' [formRef]="personForm" name="lastname"  ></ngx-label-input-field>
+     <d2fngx-read-only-field fieldLayout='row' [formRef]="personForm" name="ref"  ></d2fngx-read-only-field>
+    <d2fngx-label-input-field fieldLayout='row' [formRef]="personForm" name="firstname"  ></d2fngx-label-input-field>
+    <d2fngx-label-input-field fieldLayout='row' [formRef]="personForm" name="lastname"  ></d2fngx-label-input-field>
     <!--
     <div>
         <label class="block text-sm">lastname:</label>
@@ -40,16 +40,16 @@
         <span class="text-red-600">{{mapFieldErrorMessageSignal().get('lastname')}}</span>
     </div>
    -->
-    <ngx-label-input-field fieldLayout='row' [formRef]="personForm" name="email"  ></ngx-label-input-field>
-    <ngx-label-input-field fieldLayout='row' [formRef]="personForm" name="taille" inputType="number" ></ngx-label-input-field>
-    <ngx-label-input-field fieldLayout='row' [formRef]="personForm" name="birthday" inputType="date"  ></ngx-label-input-field>
-    <ngx-boolean-field fieldLayout='row' [formRef]="personForm" name="celibataire" label="situation"></ngx-boolean-field>
-    <ngx-choice-field fieldLayout='row' [formRef]="personForm" name="genre" [pseudoEnum]="Genre"></ngx-choice-field>
-    <ngx-choice-field fieldLayout='row' [formRef]="personForm" 
+    <d2fngx-label-input-field fieldLayout='row' [formRef]="personForm" name="email"  ></d2fngx-label-input-field>
+    <d2fngx-label-input-field fieldLayout='row' [formRef]="personForm" name="taille" inputType="number" ></d2fngx-label-input-field>
+    <d2fngx-label-input-field fieldLayout='row' [formRef]="personForm" name="birthday" inputType="date"  ></d2fngx-label-input-field>
+    <d2fngx-boolean-field fieldLayout='row' [formRef]="personForm" name="celibataire" label="situation"></d2fngx-boolean-field>
+    <d2fngx-choice-field fieldLayout='row' [formRef]="personForm" name="genre" [pseudoEnum]="Genre"></d2fngx-choice-field>
+    <d2fngx-choice-field fieldLayout='row' [formRef]="personForm" 
                       name="nationalite" 
-                      [items]="['francais','europeen','autre']"></ngx-choice-field>
-    <ngx-many-select-field fieldLayout='row' [formRef]="personForm" name="sports"  
-      [items]="['velo' , 'football' , 'tennis' , 'basket' ]" ></ngx-many-select-field>                 
+                      [items]="['francais','europeen','autre']"></d2fngx-choice-field>
+    <d2fngx-many-select-field fieldLayout='row' [formRef]="personForm" name="sports"  
+      [items]="['velo' , 'football' , 'tennis' , 'basket' ]" ></d2fngx-many-select-field>                 
 </form>
     <!-- person : <span [style.color]="okPerson?'green':'red'">{{ personModel() | json }}</span> <br/> -->
     <input type="button" value="login" [disabled]="personForm().invalid()" (click)="onPerson()" /> <br/>

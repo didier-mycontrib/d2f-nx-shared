@@ -4,12 +4,12 @@
 <!--
 <div>TEMP-LEGAL-FOOTER</div>
 -->
-<my-mat-toggle-panel [title]="legalFooterMainText()" [withMargin]="false"
+<d2fngx-mat-toggle-panel [title]="legalFooterMainText()" [withMargin]="false"
      [(panelOpenState)]="footerPanelExpand">
     @if(legalFooterTemplateRef()){
         <ng-container [ngTemplateOutlet]="legalFooterTemplateRef()??null"></ng-container>
     }@else{
         <p>legal footer</p>
     }
-</my-mat-toggle-panel>
+</d2fngx-mat-toggle-panel>
 

@@ -2,12 +2,12 @@ import { NgClass, JsonPipe } from '@angular/common';
 import { Component, computed, effect, Signal, signal } from '@angular/core';
 import { email, form, FormField, min, minLength, pattern, required, ValidationError , FieldTree} from '@angular/forms/signals';
 import { Genre, Person, PersonData } from '../../common/data/person';
-import {computed_mapFieldErrorMessageSignal, DynamicFormComponent, FieldInfoMap, isFieldValid} from 'd2f-ngx-forms';
+import {computed_mapFieldErrorMessageSignal, D2fNgxDynamicFormComponent, FieldInfoMap, isFieldValid} from 'd2f-ngx-forms';
 
 
 @Component({
   selector: 'app-person-dsf',
-  imports: [FormField,NgClass,JsonPipe,DynamicFormComponent],
+  imports: [FormField,NgClass,JsonPipe,D2fNgxDynamicFormComponent],
   templateUrl: './personDSf.component.html',
   styleUrl: './personDsf.component.css',
 })

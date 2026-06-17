@@ -3,14 +3,14 @@ import { MyImportMaterialModule } from '../../common/imports/my-import-material.
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'my-mat-toggle-panel',
+  selector: 'd2fngx-mat-toggle-panel',
   imports: [MyImportMaterialModule,NgClass],
   templateUrl: './my-mat-toggle-panel.component.html',
   styleUrls: ['./my-mat-toggle-panel.component.css']
 })
-export class MyMatTogglePanelComponent {
+export class D2fNgxMatTogglePanelComponent {
 
-  public title = input("my-toogle-panel");
+  public title = input("d2fngx-mat-toggle-panel");
 
   panelOpenState=model(false);//model=input & ouptut
 

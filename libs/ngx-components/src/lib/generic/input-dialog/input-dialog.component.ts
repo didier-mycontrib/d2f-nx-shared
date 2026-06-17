@@ -2,7 +2,6 @@ import { Component, inject, input } from '@angular/core';
 import { MyImportMaterialModule } from '../../common/imports/my-import-material.module';
 import { FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ChildrenOutletContexts } from '@angular/router';
 
 export interface SimpleDialogInput{
   title : string|null,
@@ -13,12 +12,12 @@ export interface SimpleDialogInput{
 
 
 @Component({
-  selector: 'app-input-dialog',
+  selector: 'd2fngx-input-dialog',
   imports: [MyImportMaterialModule,FormsModule],
   templateUrl: './input-dialog.component.html',
   styleUrl: './input-dialog.component.css'
 })
-export class InputDialogComponent {
+export class D2fNgxInputDialogComponent {
 
   public data = inject<SimpleDialogInput>(MAT_DIALOG_DATA);
   value : string = "";
@@ -29,7 +28,7 @@ export class InputDialogComponent {
     this.value= this.data.defaultValue;
   }
 
-  readonly dialogRef = inject(MatDialogRef<InputDialogComponent>);
+  readonly dialogRef = inject(MatDialogRef<D2fNgxInputDialogComponent>);
   
   onCancel(): void {
         this.dialogRef.close(this.data.defaultValue);
@@ -43,7 +42,7 @@ export class InputDialogComponent {
   //helper function for simply call:
   static inputDialog$(dialog : MatDialog,label:string , defaultValue : string="", title : string|null = null){
             //NB: { disableClose : true } for modal dialog box
-            return dialog.open(InputDialogComponent,
+            return dialog.open(D2fNgxInputDialogComponent,
               { disableClose : true ,
                 data:  { title : title , label : label , defaultValue : defaultValue}
               }).afterClosed();
@@ -52,7 +51,7 @@ export class InputDialogComponent {
 //helper function for simply call:
 static inputChoiceDialog$(dialog : MatDialog,label:string , choices: string[], defaultValue : string="", title : string|null = null){
   //NB: { disableClose : true } for modal dialog box
-  return dialog.open(InputDialogComponent,
+  return dialog.open(D2fNgxInputDialogComponent,
     { disableClose : true ,
       data:  { title : title , label : label , defaultValue : defaultValue , choices : choices }
     }).afterClosed();

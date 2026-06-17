@@ -24,10 +24,10 @@ export abstract class GenericRestCrudService<T> implements GenericCrudService<T>
     this.privateApiBaseUrl = `${this.apiBaseUrl}/private` ; //may be redefined by subclass
     this.publicBaseUrl = `${this.publicApiBaseUrl}/${this.entitiesName}` ; //may be redefined by subclass
     this.privateBaseUrl =`${this.privateApiBaseUrl}/${this.entitiesName}` ; //may be redefined by subclass
-    console.log("publicApiBaseUrl="+this.publicApiBaseUrl);
-    console.log("privateApiBaseUrl="+this.privateApiBaseUrl);
-    console.log("publicBaseUrl="+this.publicBaseUrl);
-    console.log("privateBaseUrl="+this.privateBaseUrl);
+    //console.log("publicApiBaseUrl="+this.publicApiBaseUrl);
+    //console.log("privateApiBaseUrl="+this.privateApiBaseUrl);
+    //console.log("publicBaseUrl="+this.publicBaseUrl);
+    //console.log("privateBaseUrl="+this.privateBaseUrl);
   }
 
   constructor() {

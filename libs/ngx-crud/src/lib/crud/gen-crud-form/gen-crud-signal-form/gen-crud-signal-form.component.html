@@ -1,32 +1,14 @@
-<my-toggle-panel [title]="title" [(panelOpenState)]="tablePanelOpenState">
-
-    @if(!formRef()){
-    <form #tdFormObject="ngForm">    
+<d2fngx-toggle-panel [title]="title" [(panelOpenState)]="tablePanelOpenState">
+        @if(!optionalSpecificSubFormTemplateRef() || specifSubFormAsAdditional()){
+           <d2fngx-dynamic-form   [formRef]="formRef()" fieldLayout="row"
+                           [mapFieldInfo]="mapFieldInfo"></d2fngx-dynamic-form>
+        }
         @if(optionalSpecificSubFormTemplateRef()){
            <ng-container 
            [ngTemplateOutlet]="optionalSpecificSubFormTemplateRef()??null"
            [ngTemplateOutletContext]="{subFormData : subFormData}" ></ng-container>
-        }
-        @else{
-        <auto-gen-td-form    
-             [(objectTempRef)]="objectTempRef"
-             [objectHelperRef]="objectHelperRef()"
-             [(modeRef)]="modeRef">
-        </auto-gen-td-form>
-        }
-    </form><!-- end of form -->
-    }
-    @else{
-        <auto-gen-signal-form    
-             [(objectTempRef)]="objectTempRef"
-             [objectHelperRef]="objectHelperRef()"
-             [(modeRef)]="modeRef"
-            [formRef]="formRef()" >
-        </auto-gen-signal-form>
-    }
-
-
- 
+        }                    
+       
          <div class="flexRowWrap">
              <div class="f-align">
                   <button (click)="onAction('update')" class="btn-primary" 
@@ -44,14 +26,7 @@
              </div> 
          </div><!-- end of flexRowWrap -->
    
-     <my-message [message]="messageRef()"></my-message>
+     <d2fngx-message [message]="messageRef()"></d2fngx-message>
 
-</my-toggle-panel>
 
-<!-- old: 
-[disabled]="!formObject.form.valid || !hasBeenChanged()"  >update 
-[disabled]="!formObject.form.valid" for add
-or
- [disabled]="!readyForUpdate()"
-[disabled]="!readyForAdd()"
--->
+</d2fngx-toggle-panel>

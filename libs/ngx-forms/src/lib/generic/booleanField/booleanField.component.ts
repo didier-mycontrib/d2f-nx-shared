@@ -5,9 +5,9 @@ import { FormField } from '@angular/forms/signals';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'ngx-boolean-field',
+  selector: 'd2fngx-boolean-field',
   imports: [FormsModule,FormField,NgClass],
   templateUrl: './booleanField.component.html',
   styleUrl: './booleanField.component.css',
 })
-export class BooleanFieldComponent extends AbstractFieldComponent {}
+export class D2fNgxBooleanFieldComponent extends AbstractFieldComponent {}

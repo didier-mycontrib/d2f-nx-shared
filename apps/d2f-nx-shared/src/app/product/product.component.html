@@ -1,11 +1,53 @@
-<generic-crud  [genericCrudContext]="genericCrudContext"
+<h3>variante avec signalForm et formulaire automatique</h3>
+<d2fngx-generic-crud  [genericCrudContext]="genericCrudContext"
                 [formRef]="productForm">
-</generic-crud>
+</d2fngx-generic-crud>
 <!-- with or without optional [formRef]="productForm" -->
 
+
+
 <hr/>
-<!-- essai direct temporaire du composant sort-object-table -->
- <sort-object-table
+
+<h3>variante avec signalForm et specific templateRef</h3>
+<d2fngx-generic-crud  [genericCrudContext]="genericCrudContext"
+                [optionalSpecificSubFormTemplateRef]="productSpecificSignalform"
+                 [formRef]="productForm">
+</d2fngx-generic-crud>
+
+<!--
+NB: subFormData as interface AbstractGenSubFormData
+with .mode ("newOne" or "existingOne") and (.obj = object of form) or (.form = signalForm)
+-->
+
+<ng-template #productSpecificSignalform let-subFormData="subFormData" >
+    <d2fngx-read-only-field fieldLayout='row' [formRef]="subFormData.form" name="ref" label="REF" ></d2fngx-read-only-field>
+    <d2fngx-label-input-field fieldLayout='row' [formRef]="subFormData.form" name="label" ></d2fngx-label-input-field>
+    <d2fngx-label-input-field fieldLayout='row' [formRef]="subFormData.form" name="price" ></d2fngx-label-input-field>
+    <d2fngx-label-input-field fieldLayout='row' [formRef]="subFormData.form" name="description" ></d2fngx-label-input-field>
+</ng-template>
+<hr/>
+
+<h3>variante avec formulaire automatique simple (template driven)</h3>
+<d2fngx-generic-crud  [genericCrudContext]="genericCrudContext"> <!--without optional [formRef]="..." -->
+</d2fngx-generic-crud>
+<hr/>
+
+<h3>variante avec specific templateRef (template driven)</h3>
+<d2fngx-generic-crud  [genericCrudContext]="genericCrudContext"
+                [optionalSpecificSubFormTemplateRef]="productSpecificTdform"
+                > <!--without optional [formRef]="..." -->
+</d2fngx-generic-crud>
+
+<ng-template #productSpecificTdform let-subFormData="subFormData" >
+    <d2fngx-read-only-field fieldLayout='row' [(fieldData)]="subFormData.obj.ref" name="ref" label="reference" ></d2fngx-read-only-field>
+    <d2fngx-label-input-field fieldLayout='row' [(fieldData)]="subFormData.obj.label" name="label" ></d2fngx-label-input-field>
+     <d2fngx-label-input-field fieldLayout='row' [(fieldData)]="subFormData.obj.price" name="price" ></d2fngx-label-input-field>
+       <d2fngx-label-input-field fieldLayout='row' [(fieldData)]="subFormData.obj.description" name="description" ></d2fngx-label-input-field>
+</ng-template>
+
+<hr/>
+<h3>essai direct temporaire du composant d2fngx-sort-object-table</h3>
+ <d2fngx-sort-object-table
           [tabObjectsRef]="tempProducts"
           [essentialKeysArrayRef]="['ref','label','price']"
           [(selectedObjectRef)]="selectedObject"

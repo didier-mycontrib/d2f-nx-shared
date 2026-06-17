@@ -5,12 +5,12 @@ import { FormField } from '@angular/forms/signals';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'ngx-many-select-field',
+  selector: 'd2fngx-many-select-field',
   imports: [FormsModule,FormField,NgClass],
   templateUrl: './manySelectField.component.html',
   styleUrl: './manySelectField.component.css',
 })
-export class ManySelectFieldComponent extends AbstractFieldComponent {
+export class D2fNgxManySelectFieldComponent extends AbstractFieldComponent {
 
   items=input<any[]>([]); //items (possible values for making a choice)
   selectedItems : any[]=[];
