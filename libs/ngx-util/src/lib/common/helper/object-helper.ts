@@ -42,4 +42,13 @@ export abstract class AbstractObjectHelper<T,I> implements ObjectHelper<T,I>{
     let keyValue = obj[this.classHelper.idKeyName];
     return `${this.classHelper.idKeyName}=${keyValue}`;
   }
+
+  addFieldHelper(fieldHelper: FieldHelper){
+    this.classHelper.fieldHelperMap.set(fieldHelper.fieldName,fieldHelper);
+  }
+
+  addFieldHelperWithExtraInfo(fieldHelper: FieldHelper,fieldExtraInfo:any){
+    fieldHelper.extraInfo=fieldExtraInfo;
+    this.classHelper.fieldHelperMap.set(fieldHelper.fieldName,fieldHelper);
+  }
 }

@@ -4,7 +4,7 @@
      <ngx-read-only-field [formRef]="formRef()" [fieldLayout]="fieldLayout()" 
      [name]="key" [label]="mapFieldInfo()[key].label" ></ngx-read-only-field>
  }@else{
-   @switch(mapFieldInfo()[key].type){
+   @switch(mapFieldInfo()[key].fieldType){
        @case("boolean"){
             <ngx-boolean-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"  
             [name]="key" [label]="mapFieldInfo()[key].label" ></ngx-boolean-field>
@@ -24,7 +24,7 @@
             }
             @if(!mapFieldInfo()[key].pseudoEnum! && !mapFieldInfo()[key].items){
                  <ngx-label-input-field [formRef]="formRef()" [fieldLayout]="fieldLayout()"
-                  [name]="key"  [inputType]="mapFieldInfo()[key].type??'text'"></ngx-label-input-field>
+                  [name]="key"  [inputType]="mapFieldInfo()[key].fieldType??'text'"></ngx-label-input-field>
             }
        }
    }

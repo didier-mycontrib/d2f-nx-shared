@@ -5,7 +5,6 @@ import { ProductMemService } from '../common/service/product-mem.service';
 import { GenericCrudContext , GenericCrudComponent } from 'd2f-ngx-crud';
 import { SortObjectTableComponent } from 'd2f-ngx-components';
 import { email, form, min, minLength, pattern, required, schema, SchemaOrSchemaFn, SchemaPath } from '@angular/forms/signals';
-import { FieldInfoMap } from 'd2f-ngx-forms';
 
 
 @Component({
@@ -44,11 +43,6 @@ export class ProductComponent {
       min(schemaPath.price, 0.0, { message: 'price must be postive' });
     });
     productForm = form(this.productDefaultInstanceModel,this.productSchema);
-
-
-  productFieldInfoMap : FieldInfoMap = {
-    ref : { notEditable : true}
-  }  
 
 
 

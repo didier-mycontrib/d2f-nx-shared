@@ -36,8 +36,8 @@ export class DynamicFormComponent {
       fieldInfo = { }
       this.mapFieldInfo()[k]= fieldInfo;
     }
-    if(fieldInfo.type==undefined)
-         fieldInfo.type=typeof v;
+    if(fieldInfo.fieldType==undefined)
+         fieldInfo.fieldType=typeof v;
     //console.log("k="+k + " v="+v + " type=" + this.mapFieldInfo()[k].type)
    }
   }

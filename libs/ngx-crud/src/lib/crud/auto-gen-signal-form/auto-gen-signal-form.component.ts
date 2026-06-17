@@ -21,7 +21,7 @@ export class AutoGenSignalFormComponent  {
         modeRef = model("newOne"); //or "existingOne"
 
         formRef = input<any>(); //optional (may be undefined)
-        mapFieldInfo=input<FieldInfoMap>({});//optional (may be empty)
+        mapFieldInfo:FieldInfoMap ={};//to build here from  optional extraInfo in objectHelper/fieldHelper
 
     
          ngOnChanges(changes:SimpleChanges){
@@ -32,6 +32,22 @@ export class AutoGenSignalFormComponent  {
             }
          }
 
+         ngOnInit(){
+            //building mapFieldInfo from fieldHelper extraInfo
+            if(this.objectHelperRef()){
+               let fieldHelperMap = this.objectHelperRef()?.classHelper.fieldHelperMap;
+               if(fieldHelperMap){
+               //console.log(fieldHelperMap.size)
+               for(let k of fieldHelperMap.keys()){
+                   let fieldHelper = this.objectHelperRef()?.getFieldHelper(k);
+                   let fieldInfo = fieldHelper?.extraInfo;
+                   //console.log(`for k=${k} ,fieldHelper = ${JSON.stringify(fieldHelper)} ,  fieldInfo = ${JSON.stringify(fieldInfo)}`)
+                   if(fieldInfo)
+                     this.mapFieldInfo[k]=fieldInfo;
+                }
+               }
+            }
+         }
      
       
 

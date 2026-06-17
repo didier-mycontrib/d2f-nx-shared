@@ -1,8 +1,9 @@
 import { NgClass, JsonPipe } from '@angular/common';
 import { Component, computed, effect, Signal, signal } from '@angular/core';
-import { email, form, FormField, min, minLength, pattern, required, ValidationError , FieldTree} from '@angular/forms/signals';
+import { email, form, FormField, min, minLength, pattern, required, ValidationError , FieldTree, metadata} from '@angular/forms/signals';
 import { Genre, Person, PersonData } from '../../common/data/person';
-import {BooleanFieldComponent, ChoiceFieldComponent, computed_mapFieldErrorMessageSignal, DynamicFormComponent, isFieldValid, LabelInputFieldComponent, ManySelectFieldComponent, ReadOnlyFieldComponent} from 'd2f-ngx-forms';
+import {BooleanFieldComponent, ChoiceFieldComponent, computed_mapFieldErrorMessageSignal, DynamicFormComponent,
+     isFieldValid, LabelInputFieldComponent, ManySelectFieldComponent, ReadOnlyFieldComponent} from 'd2f-ngx-forms';
 
 
 @Component({

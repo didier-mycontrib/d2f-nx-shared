@@ -10,9 +10,9 @@ export class DeviseHelper extends AbstractObjectHelper<Devise,String> {
         buildEmptyObject(): Devise { return new Devise(); };
         initObjectHelper(){
                this.classHelper.essentialFieldNames = ["code","name","change"]
-               this.classHelper.fieldHelperMap.set("code",new FieldHelper("code"))
-               this.classHelper.fieldHelperMap.set("name",new FieldHelper("name"))
-               this.classHelper.fieldHelperMap.set("change",new FieldHelper("change","number",1));
+               this.addFieldHelper(new FieldHelper("code"))
+               this.addFieldHelper(new FieldHelper("name"))
+               this.addFieldHelper(new FieldHelper("change","number",1));
                //NB:FieldHelper(fieldName,fieldType,defaultValue)
         }
 }

@@ -9,11 +9,12 @@ export class ProductHelper extends AbstractObjectHelper<Product,String|null> {
         getId(obj: Product): String | null { return obj.ref; };
         buildEmptyObject(): Product { return new Product(); };
         initObjectHelper(){
-               this.classHelper.essentialFieldNames = ["ref","label","price"]
-               this.classHelper.fieldHelperMap.set("ref",new FieldHelper("ref"))
-               this.classHelper.fieldHelperMap.set("label",new FieldHelper("label"))
-               this.classHelper.fieldHelperMap.set("price",new FieldHelper("price","number",0));
+               this.classHelper.essentialFieldNames = ["ref","label","price"];
+               this.addFieldHelperWithExtraInfo(new FieldHelper("ref"), { notEditable : true});
+               this.addFieldHelper(new FieldHelper("label"))
+               this.addFieldHelper(new FieldHelper("price","number",0));
                //NB:FieldHelper(fieldName,fieldType,defaultValue)
+               //attention , JSON.stringify( js Map) not display map content !!!
         }
 }
 

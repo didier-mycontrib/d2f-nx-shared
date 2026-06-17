@@ -35,11 +35,11 @@ export class PersonDsfComponent {
 
   personFieldInfoMap : FieldInfoMap = {
     celibataire : { label : 'situation'},
-    birthday  :  { type: 'date' },
+    birthday  :  { fieldType: 'date' },
     genre : { pseudoEnum : this.Genre },
     nationalite : { items : [ 'francais' , 'allemand' , 'anglais' , 'espagnol' , 
                               'italien' , 'belge' , 'portugais' , 'autrichien' , 'polonais']},
-    sports  :  { type: 'array' , items : ['football' , 'velo' , 'basket' , 'tennis' , 'running' , 'walk' ] },
+    sports  :  { fieldType: 'array' , items : ['football' , 'velo' , 'basket' , 'tennis' , 'running' , 'walk' ] },
     ref : { notEditable : true}
   }  
 

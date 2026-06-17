@@ -34,8 +34,8 @@ export class GenericCrudComponent implements OnInit {
 
   public genericCrudContext  = input<GenericCrudContext<any,any> | null>(null);
 
-  formRef = input<any>(); //optional (may be undefined)
-  mapFieldInfo=input<FieldInfoMap>({});//optional (may be empty)
+  formRef = input<any>(); //optional signalFormRef (may be undefined)
+  //optional FieldInfo now as optional extraInfo in objectHelper/fieldHelper
 
 
   //genericCrudService now in genericCrudContext

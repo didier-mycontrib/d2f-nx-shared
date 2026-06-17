@@ -55,7 +55,7 @@ export class GenCrudFormComponent {
     optionalSpecificSubFormTemplateRef = input<TemplateRef<any>>();
 
     formRef = input<any>(); //optional (may be undefined)
-    mapFieldInfo=input<FieldInfoMap>({});//optional (may be empty)
+    //optional FieldInfo now as optional extraInfo in objectHelper/fieldHelper
 
 
     checkValid(){
