@@ -3,10 +3,12 @@
   "version": "0.0.4",
   "peerDependencies": {
     "@angular/common": "^21.2.0",
-    "@angular/core": "^21.2.0"
+    "@angular/core": "^21.2.0",
+    "d2f-ngx-session" :  "^0.0.4",
+    "d2f-ngx-components" :  "^0.0.4"
   },
   "sideEffects": false,
   "dependencies": {
-    "d2f-ngx-session" :  "workspace:*"
+  
   }
 }
