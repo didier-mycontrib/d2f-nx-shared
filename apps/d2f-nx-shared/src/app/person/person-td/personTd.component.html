@@ -2,7 +2,8 @@
 
  <form #personTemplateDrivenForm="ngForm" class="p-1 grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-3">
    
-     <d2fngx-read-only-field [(fieldData)]="personData.ref" name="ref"  ></d2fngx-read-only-field>
+     <!-- <d2fngx-read-only-field [(fieldData)]="personData.ref" name="ref"  ></d2fngx-read-only-field> -->
+     <d2fngx-label-any-content-field label="reference">{{personData.ref}} </d2fngx-label-any-content-field>
      <d2fngx-label-input-field [(fieldData)]="personData.firstname" name="firstname"  ></d2fngx-label-input-field>
      <d2fngx-label-input-field [(fieldData)]="personData.lastname" name="lastname" label="last_name" ></d2fngx-label-input-field>
     <!--

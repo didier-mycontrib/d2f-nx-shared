@@ -7,3 +7,4 @@ export * from './lib/generic/labelInputField/labelInputField.component';
 export * from './lib/generic/readOnlyField/readOnlyField.component';
 export * from './lib/generic/choiceField/choiceField.component';
 export * from './lib/generic/manySelectField/manySelectField.component';
+export * from './lib/generic/label-any-content-field/label-any-content-field.component';

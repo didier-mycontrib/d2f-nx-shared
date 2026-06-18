@@ -2,14 +2,14 @@ import { Component, inject, signal, TemplateRef, ViewChild } from '@angular/core
 import { MatDialog } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { WithSimplePopupComponent } from './with-simple-popup/with-simple-popup.component';
-import { D2fNgxConfirmDialogComponent, D2fNgxInputDialogComponent, D2fNgxTemplateDialogComponent } from 'd2f-ngx-components';
+import { D2fNgxConfirmDialogComponent, D2fNgxInputDialogComponent, D2fNgxTemplateDialogComponent , D2fNgxGenericCardComponent } from 'd2f-ngx-components';
 import { HighlightBackgroundOverDirective, HighlightBorderOverDirective } from 'd2f-ngx-util';
 
 
 @Component({
   selector: 'app-home',
   imports: [HighlightBackgroundOverDirective, HighlightBorderOverDirective,FormsModule,
-    WithSimplePopupComponent],
+    WithSimplePopupComponent , D2fNgxGenericCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

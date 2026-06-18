@@ -2,14 +2,14 @@ import { NgClass, JsonPipe } from '@angular/common';
 import { Component, computed, effect, Signal, signal } from '@angular/core';
 import { email, form, FormField, min, minLength, pattern, required, ValidationError , FieldTree} from '@angular/forms/signals';
 import { Genre, Person, PersonData } from '../../common/data/person';
-import {D2fNgxBooleanFieldComponent, D2fNgxChoiceFieldComponent, computed_mapFieldErrorMessageSignal, D2fNgxDynamicFormComponent, isFieldValid, D2fNgxLabelInputFieldComponent, D2fNgxManySelectFieldComponent, D2fNgxReadOnlyFieldComponent} from 'd2f-ngx-forms';
+import {D2fNgxBooleanFieldComponent, D2fNgxChoiceFieldComponent, computed_mapFieldErrorMessageSignal, D2fNgxDynamicFormComponent, isFieldValid, D2fNgxLabelInputFieldComponent, D2fNgxManySelectFieldComponent, D2fNgxReadOnlyFieldComponent , D2fNgxLabelAnyContentFieldComponent} from 'd2f-ngx-forms';
 import { FormsModule, NgForm } from '@angular/forms';
 
 
 
 @Component({
   selector: 'app-person-td',
-  imports: [FormsModule,JsonPipe,D2fNgxLabelInputFieldComponent,D2fNgxBooleanFieldComponent,
+  imports: [FormsModule,JsonPipe,D2fNgxLabelInputFieldComponent,D2fNgxBooleanFieldComponent,D2fNgxLabelAnyContentFieldComponent,
     D2fNgxChoiceFieldComponent,D2fNgxManySelectFieldComponent,D2fNgxReadOnlyFieldComponent],
   templateUrl: './personTd.component.html',
   styleUrl: './personTd.component.css',

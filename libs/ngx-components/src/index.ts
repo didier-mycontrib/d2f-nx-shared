@@ -7,3 +7,4 @@ export * from './lib/generic/sort-object-table/sort-object-table.component';
 export * from './lib/generic/template-dialog/template-dialog.component'
 export * from './lib/generic/simple/simple-popup/simple-popup.component'
 export * from './lib/generic/my-message/my-message.component'
+export * from './lib/generic/generic-card/generic-card.component';
